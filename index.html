@@ -880,7 +880,7 @@
         }
         
         /* ============================
-                   ABOUT - WITH SLIDESHOW (RESIZED)
+                   ABOUT - WITH SLIDESHOW
                 ============================ */
         .about {
             padding: 50px 0;
@@ -930,17 +930,15 @@
             font-size: 13px;
         }
         
-        /* About Image Slideshow - RESIZED */
+        /* About Image Slideshow */
         .about-slideshow {
             position: relative;
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.6);
             border: 1px solid var(--border-subtle);
-            aspect-ratio: 4 / 3;
-            max-height: 340px;
+            aspect-ratio: 1 / 1;
             background: var(--bg-card);
-            width: 100%;
         }
         
         .about-slide {
@@ -964,10 +962,21 @@
             display: block;
         }
         
+        .about-slide-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-light);
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+        
         /* About Slideshow Dots */
         .about-dots {
             position: absolute;
-            bottom: 10px;
+            bottom: 14px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -1244,20 +1253,20 @@
         }
         
         /* ============================
-                   FEATURED PRODUCTS
+                   LATEST ARRIVALS
                 ============================ */
-        .featured-products {
+        .latest-arrivals {
             padding: 50px 0;
             background: var(--bg-dark);
         }
         
-        .products-grid {
+        .arrivals-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
         
-        .product-card {
+        .arrival-card {
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius);
@@ -1268,13 +1277,13 @@
             overflow: hidden;
         }
         
-        .product-card:hover {
+        .arrival-card:hover {
             border-color: var(--text-muted);
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.3);
         }
         
-        .product-card .image-placeholder {
+        .arrival-card .image-placeholder {
             background: var(--bg-light);
             border-radius: var(--radius);
             height: 140px;
@@ -1285,20 +1294,20 @@
             border: 1px solid var(--border-subtle);
         }
         
-        .product-card .image-placeholder i {
+        .arrival-card .image-placeholder i {
             font-size: 48px;
             color: var(--text-muted);
             opacity: 0.5;
         }
         
-        .product-card .image-placeholder img {
+        .arrival-card .image-placeholder img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: var(--radius);
         }
         
-        .product-card .badge {
+        .arrival-card .badge {
             display: inline-block;
             font-size: 9px;
             font-weight: 700;
@@ -1311,7 +1320,7 @@
             margin-bottom: 6px;
         }
         
-        .product-card h4 {
+        .arrival-card h4 {
             font-family: var(--font-heading);
             color: var(--text-primary);
             font-size: 15px;
@@ -1320,13 +1329,13 @@
             margin-bottom: 2px;
         }
         
-        .product-card .category {
+        .arrival-card .category {
             font-size: 12px;
             color: var(--text-muted);
             margin-bottom: 8px;
         }
         
-        .product-card .price {
+        .arrival-card .price {
             font-family: var(--font-heading);
             color: var(--text-primary);
             font-size: 18px;
@@ -1334,7 +1343,7 @@
             margin-bottom: 10px;
         }
         
-        .product-card .btn {
+        .arrival-card .btn {
             width: 100%;
             justify-content: center;
             font-size: 11px;
@@ -1700,11 +1709,6 @@
             .about-text .features li {
                 justify-content: flex-start;
             }
-            .about-slideshow {
-                max-height: 280px;
-                max-width: 500px;
-                margin: 0 auto;
-            }
             .event-wrapper {
                 flex-direction: column;
                 text-align: center;
@@ -1736,7 +1740,7 @@
             .whatnot-show-card {
                 max-width: 80%;
             }
-            .products-grid {
+            .arrivals-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -1855,11 +1859,6 @@
             .about-text .features li {
                 font-size: 13px;
             }
-            .about-slideshow {
-                max-height: 240px;
-                max-width: 100%;
-                aspect-ratio: 4 / 3;
-            }
             .footer-top {
                 flex-direction: column;
                 align-items: center;
@@ -1899,15 +1898,20 @@
                 margin: 10px;
                 max-height: 95vh;
             }
-            .products-grid {
+            .arrivals-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
             }
-            .product-card .image-placeholder {
+            .arrival-card .image-placeholder {
                 height: 100px;
             }
-            .product-card .image-placeholder i {
+            .arrival-card .image-placeholder i {
                 font-size: 32px;
+            }
+            .about-slideshow {
+                aspect-ratio: 1 / 1;
+                max-width: 400px;
+                margin: 0 auto;
             }
         }
         
@@ -1962,10 +1966,6 @@
             }
             .about-text .features li {
                 justify-content: center;
-            }
-            .about-slideshow {
-                max-height: 200px;
-                aspect-ratio: 4 / 3;
             }
             .event-image {
                 max-width: 100%;
@@ -2028,29 +2028,33 @@
                 flex-wrap: wrap;
                 gap: 4px;
             }
-            .products-grid {
+            .arrivals-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
             }
-            .product-card {
+            .arrival-card {
                 padding: 14px 10px 12px;
             }
-            .product-card .image-placeholder {
+            .arrival-card .image-placeholder {
                 height: 80px;
             }
-            .product-card .image-placeholder i {
+            .arrival-card .image-placeholder i {
                 font-size: 24px;
             }
-            .product-card h4 {
+            .arrival-card h4 {
                 font-size: 13px;
             }
-            .product-card .price {
+            .arrival-card .price {
                 font-size: 15px;
             }
-            .product-card .btn {
+            .arrival-card .btn {
                 font-size: 10px;
                 padding: 8px;
                 min-height: 32px;
+            }
+            .about-slideshow {
+                aspect-ratio: 1 / 1;
+                max-width: 100%;
             }
             .about-dots .dot {
                 width: 6px;
@@ -2090,7 +2094,7 @@
                 padding: 8px 12px;
                 min-height: 34px;
             }
-            .products-grid {
+            .arrivals-grid {
                 grid-template-columns: 1fr;
                 max-width: 280px;
                 margin: 0 auto;
@@ -2122,7 +2126,7 @@
                 background: transparent;
                 color: var(--text-secondary);
             }
-            .product-card:hover {
+            .arrival-card:hover {
                 transform: none !important;
                 border-color: var(--border-subtle);
             }
@@ -2299,7 +2303,7 @@
     </div>
 </section>
 
-<!-- ===== ABOUT - WITH RESIZED SLIDESHOW ===== -->
+<!-- ===== ABOUT - WITH SLIDESHOW ===== -->
 <section class="about" id="about">
     <div class="container">
         <div class="about-grid">
@@ -2328,7 +2332,7 @@
                 <a href="#shop" class="btn btn-primary" style="margin-top:6px;"><i class="fas fa-arrow-right" aria-hidden="true"></i> Explore Collection</a>
             </div>
             
-            <!-- Slideshow - Resized -->
+            <!-- Slideshow -->
             <div class="about-slideshow" id="aboutSlideshow">
                 <div class="about-slide active" data-index="0" style="background-image: url('https://i.imgur.com/lSHTgC8.png');"></div>
                 <div class="about-slide" data-index="1" style="background-image: url('https://i.imgur.com/gHukRN3.png');"></div>
@@ -2424,31 +2428,19 @@
     </div>
 </section>
 
-<!-- ===== FEATURED PRODUCTS ===== -->
-<section class="featured-products" id="products">
+<!-- ===== LATEST ARRIVALS ===== -->
+<section class="latest-arrivals" id="arrivals">
     <div class="container">
         <div class="section-header">
-            <span class="tag">Top Picks</span>
-            <h2>Featured <span class="highlight">Products</span></h2>
-            <p>Explore our most popular collectibles and cards</p>
+            <span class="tag">Fresh Stock</span>
+            <h2>Latest <span class="highlight">Arrivals</span></h2>
+            <p>Check out the newest additions to our collection</p>
             <div class="line"></div>
         </div>
         
-        <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card">
-                <div class="image-placeholder">
-                    <i class="fas fa-image"></i>
-                </div>
-                <span class="badge">Hot</span>
-                <h4>Product Name</h4>
-                <p class="category">Category</p>
-                <div class="price">$XX.XX</div>
-                <a href="#shop" class="btn btn-primary">View Product</a>
-            </div>
-            
-            <!-- Product 2 -->
-            <div class="product-card">
+        <div class="arrivals-grid">
+            <!-- Card 1 -->
+            <div class="arrival-card">
                 <div class="image-placeholder">
                     <i class="fas fa-image"></i>
                 </div>
@@ -2459,20 +2451,32 @@
                 <a href="#shop" class="btn btn-primary">View Product</a>
             </div>
             
-            <!-- Product 3 -->
-            <div class="product-card">
+            <!-- Card 2 -->
+            <div class="arrival-card">
                 <div class="image-placeholder">
                     <i class="fas fa-image"></i>
                 </div>
-                <span class="badge">Hot</span>
+                <span class="badge">New</span>
                 <h4>Product Name</h4>
                 <p class="category">Category</p>
                 <div class="price">$XX.XX</div>
                 <a href="#shop" class="btn btn-primary">View Product</a>
             </div>
             
-            <!-- Product 4 -->
-            <div class="product-card">
+            <!-- Card 3 -->
+            <div class="arrival-card">
+                <div class="image-placeholder">
+                    <i class="fas fa-image"></i>
+                </div>
+                <span class="badge">New</span>
+                <h4>Product Name</h4>
+                <p class="category">Category</p>
+                <div class="price">$XX.XX</div>
+                <a href="#shop" class="btn btn-primary">View Product</a>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="arrival-card">
                 <div class="image-placeholder">
                     <i class="fas fa-image"></i>
                 </div>
@@ -2563,7 +2567,7 @@
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#shop">Shop</a></li>
                         <li><a href="#events">Events</a></li>
-                        <li><a href="#products">Featured Products</a></li>
+                        <li><a href="#arrivals">Latest Arrivals</a></li>
                     </ul>
                 </div>
                 
@@ -2827,6 +2831,7 @@
             });
         });
         
+        // Pause about slideshow on hover
         const aboutSlideshowContainer = document.getElementById('aboutSlideshow');
         if (aboutSlideshowContainer) {
             aboutSlideshowContainer.addEventListener('mouseenter', stopAboutSlideshow);
