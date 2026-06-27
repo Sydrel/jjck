@@ -16,21 +16,16 @@
     
     <style>
         /* ============================
-                   HIDE SCROLLBAR - KEEP SCROLLING
+                   HIDE SCROLLBAR
                 ============================ */
-        /* For Webkit browsers (Chrome, Safari, Edge) */
         ::-webkit-scrollbar {
             width: 0px;
             height: 0px;
             background: transparent;
         }
-        
-        /* For Firefox */
         html {
             scrollbar-width: none;
         }
-        
-        /* For Internet Explorer and Edge legacy */
         body {
             -ms-overflow-style: none;
         }
@@ -62,9 +57,9 @@
             --header-height: 64px;
             --container-padding: 16px;
             
-            /* Slideshow */
             --slide-duration: 5s;
             --fade-duration: 1s;
+            --yellow: #FFFF33;
         }
         
         /* ============================
@@ -79,7 +74,7 @@
         html {
             scroll-behavior: smooth;
             -webkit-text-size-adjust: 100%;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
         
         body {
@@ -91,7 +86,7 @@
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
             width: 100%;
-            -ms-overflow-style: none; /* IE and Edge */
+            -ms-overflow-style: none;
         }
         
         img {
@@ -172,6 +167,65 @@
             padding: 8px 18px;
             font-size: 11px;
             min-height: 36px;
+        }
+        
+        .btn-yellow {
+            background: var(--yellow);
+            color: var(--text-dark);
+        }
+        
+        .btn-yellow:hover {
+            background: #e6e62e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,51,0.3);
+        }
+        
+        .btn-outline-yellow {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid rgba(0,0,0,0.3);
+        }
+        
+        .btn-outline-yellow:hover {
+            border-color: var(--text-dark);
+            background: rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+        
+        /* Contact Trigger Button (for modal) */
+        .contact-trigger-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: var(--text-primary);
+            color: var(--text-dark);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            min-height: 48px;
+            touch-action: manipulation;
+            white-space: nowrap;
+        }
+        
+        .contact-trigger-btn:hover {
+            background: var(--text-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.15);
+        }
+        
+        .contact-trigger-btn:active {
+            transform: translateY(0);
+        }
+        
+        .contact-trigger-btn i {
+            font-size: 16px;
         }
         
         /* ============================
@@ -327,6 +381,26 @@
             margin-left: 4px;
         }
         
+        .nav .contact-trigger-btn {
+            padding: 8px 18px;
+            font-size: 11px;
+            min-height: 36px;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+        }
+        
+        .nav .contact-trigger-btn:hover {
+            background: var(--text-primary);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.15);
+        }
+        
+        .nav .contact-trigger-btn i {
+            font-size: 12px;
+        }
+        
         .hamburger {
             display: none;
             flex-direction: column;
@@ -361,7 +435,6 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
         
-        /* Mobile Nav */
         .mobile-nav {
             display: none;
             position: fixed;
@@ -401,6 +474,21 @@
             color: var(--text-primary);
         }
         
+        .mobile-nav .contact-trigger-btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 8px;
+            background: var(--text-primary);
+            color: var(--text-dark);
+            padding: 14px;
+            font-size: 15px;
+            min-height: 50px;
+        }
+        
+        .mobile-nav .contact-trigger-btn:hover {
+            background: var(--text-secondary);
+        }
+        
         .mobile-nav .btn {
             margin-top: 8px;
             width: 100%;
@@ -408,7 +496,7 @@
         }
         
         /* ============================
-                   HERO - SLIDESHOW BANNER
+                   HERO - SLIDESHOW
                 ============================ */
         .hero {
             min-height: 100vh;
@@ -421,7 +509,6 @@
             padding: calc(var(--header-height) + 30px) 0 50px;
         }
         
-        /* Slideshow Container */
         .hero-slideshow {
             position: absolute;
             inset: 0;
@@ -436,7 +523,6 @@
             background-repeat: no-repeat;
             opacity: 0;
             transition: opacity var(--fade-duration) ease-in-out;
-            filter: grayscale(100%) brightness(0.55);
             transform: scale(1.05);
         }
         
@@ -444,11 +530,6 @@
             opacity: 1;
         }
         
-        .hero-slide.fade-out {
-            opacity: 0;
-        }
-        
-        /* Slide images */
         .hero-slide:nth-child(1) {
             background-image: url('//img1.wsimg.com/isteam/ip/7c68d443-7c2c-4c2f-860f-93c5bf87afbb/JJCK%20front-3aca283.jpeg/:/rs=w:1920,h:1080,cg:true,m');
         }
@@ -468,7 +549,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.55) 100%);
+            background: linear-gradient(135deg, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.50) 100%);
             pointer-events: none;
             z-index: 1;
         }
@@ -491,8 +572,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.15);
             padding: 5px 14px 5px 8px;
             border-radius: 50px;
             font-size: 11px;
@@ -526,7 +607,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 12px;
-            text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 40px rgba(0,0,0,0.6);
         }
         
         .hero h1 .highlight {
@@ -539,7 +620,7 @@
             max-width: 480px;
             margin-bottom: 20px;
             line-height: 1.7;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
         }
         
         .hero-trade-info {
@@ -559,10 +640,10 @@
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            background: rgba(255,255,255,0.06);
+            background: rgba(0,0,0,0.4);
             padding: 5px 12px;
             border-radius: 20px;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid rgba(255,255,255,0.12);
             backdrop-filter: blur(4px);
             white-space: nowrap;
         }
@@ -582,10 +663,10 @@
             gap: 6px;
             font-size: 11px;
             color: var(--text-secondary);
-            background: rgba(255,255,255,0.06);
+            background: rgba(0,0,0,0.4);
             padding: 5px 12px;
             border-radius: 20px;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid rgba(255,255,255,0.12);
             backdrop-filter: blur(4px);
             white-space: nowrap;
         }
@@ -617,7 +698,6 @@
             max-width: 220px;
         }
         
-        /* Slideshow indicator dots */
         .hero-dots {
             position: absolute;
             bottom: 30px;
@@ -632,7 +712,7 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.4);
             cursor: pointer;
             transition: var(--transition);
             border: none;
@@ -645,7 +725,7 @@
         }
         
         .hero-dots .dot:hover {
-            background: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.7);
         }
         
         /* ============================
@@ -800,7 +880,7 @@
         }
         
         /* ============================
-                   ABOUT
+                   ABOUT - WITH SLIDESHOW (RESIZED)
                 ============================ */
         .about {
             padding: 50px 0;
@@ -850,54 +930,304 @@
             font-size: 13px;
         }
         
-        .about-image img {
+        /* About Image Slideshow - RESIZED */
+        .about-slideshow {
+            position: relative;
             border-radius: var(--radius);
+            overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-            width: 100%;
             border: 1px solid var(--border-subtle);
-            filter: grayscale(100%);
+            aspect-ratio: 4 / 3;
+            max-height: 340px;
+            background: var(--bg-card);
+            width: 100%;
+        }
+        
+        .about-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity var(--fade-duration) ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .about-slide.active {
+            opacity: 1;
+        }
+        
+        .about-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* About Slideshow Dots */
+        .about-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 5;
+        }
+        
+        .about-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            padding: 0;
+        }
+        
+        .about-dots .dot.active {
+            background: var(--text-primary);
+            transform: scale(1.2);
+        }
+        
+        .about-dots .dot:hover {
+            background: rgba(255,255,255,0.7);
         }
         
         /* ============================
-                   PROMO BANNER
+                   PROMO BANNER - WITH GIVEAWAY CONTENT
                 ============================ */
         .promo-banner {
-            padding: 40px 0;
-            background: var(--bg-light);
+            padding: 50px 0;
+            background: var(--yellow);
             text-align: center;
             position: relative;
             overflow: hidden;
-            border-top: 1px solid var(--border-subtle);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-        
-        .promo-banner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         
         .promo-banner .container {
             position: relative;
             z-index: 1;
+            max-width: 900px;
         }
         
         .promo-banner h2 {
             font-family: var(--font-heading);
             font-size: clamp(24px, 3.5vw, 34px);
-            color: var(--text-primary);
+            color: var(--text-dark);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         
-        .promo-banner p {
-            color: var(--text-secondary);
-            font-size: clamp(14px, 1.2vw, 18px);
-            max-width: 480px;
+        .promo-banner h2 .highlight {
+            color: var(--bg-dark);
+        }
+        
+        .promo-banner .subtitle {
+            color: rgba(0,0,0,0.7);
+            font-size: clamp(15px, 1.2vw, 18px);
+            max-width: 600px;
             margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+        
+        .giveaway-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 20px 0 28px;
+            text-align: left;
+        }
+        
+        .giveaway-card {
+            background: rgba(0,0,0,0.06);
+            border-radius: var(--radius);
+            padding: 20px 20px 18px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: var(--transition);
+        }
+        
+        .giveaway-card:hover {
+            background: rgba(0,0,0,0.10);
+            transform: translateY(-2px);
+        }
+        
+        .giveaway-card .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 8px;
+        }
+        
+        .giveaway-card h4 {
+            font-family: var(--font-heading);
+            color: var(--text-dark);
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        
+        .giveaway-card p {
+            color: rgba(0,0,0,0.7);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .giveaway-card p strong {
+            color: var(--text-dark);
+        }
+        
+        .giveaway-footer {
+            background: rgba(0,0,0,0.04);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        
+        .giveaway-footer p {
+            color: rgba(0,0,0,0.8);
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .giveaway-footer p strong {
+            color: var(--text-dark);
+        }
+        
+        .whatnot-show-card {
+            max-width: 500px;
+            margin: 0 auto 24px;
+            background: var(--bg-dark);
+            border-radius: var(--radius);
+            border: 1px solid rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: var(--transition);
+            text-align: left;
+        }
+        
+        .whatnot-show-card:hover {
+            border-color: var(--text-muted);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+        
+        .whatnot-show-card a {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .whatnot-show-card .show-preview {
+            position: relative;
+            background: linear-gradient(135deg, #1a1a2e, #2d2d44);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-subtle);
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .whatnot-show-card .show-preview i {
+            font-size: 48px;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        
+        .whatnot-show-card:hover .show-preview i {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .whatnot-show-card .show-preview .live-badge {
+            display: inline-block;
+            background: #ef4444;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 12px;
+            border-radius: 20px;
+            animation: pulse-badge 1.5s infinite;
+        }
+        
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .whatnot-show-card .show-preview .watch-text {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        .whatnot-show-card .show-info {
+            padding: 16px 20px;
+        }
+        
+        .whatnot-show-card .show-info h3 {
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        
+        .whatnot-show-card .show-info .host {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .whatnot-show-card .show-info .host strong {
+            color: var(--text-primary);
+        }
+        
+        .whatnot-show-card .show-info .stats {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        .whatnot-show-card .show-info .stats span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .whatnot-show-card .show-info .stats i {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+        
+        .whatnot-show-card .show-info .stats .rating {
+            color: #f5c518;
         }
         
         .promo-banner .actions {
@@ -914,29 +1244,212 @@
         }
         
         /* ============================
-                   CONTACT
+                   FEATURED PRODUCTS
                 ============================ */
-        .contact {
+        .featured-products {
             padding: 50px 0;
-            background: var(--bg-card);
+            background: var(--bg-dark);
         }
         
-        .contact-grid {
+        .products-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
         }
         
-        .contact-info .info-item {
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            padding: 20px 16px 16px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card:hover {
+            border-color: var(--text-muted);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+        
+        .product-card .image-placeholder {
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            height: 140px;
             display: flex;
-            gap: 14px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-subtle);
+        }
+        
+        .product-card .image-placeholder i {
+            font-size: 48px;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+        
+        .product-card .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+        
+        .product-card .badge {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 12px;
+            border-radius: 20px;
+            background: var(--yellow);
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        
+        .product-card h4 {
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+        
+        .product-card .category {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .product-card .price {
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .product-card .btn {
+            width: 100%;
+            justify-content: center;
+            font-size: 11px;
+            padding: 10px;
+            min-height: 38px;
+        }
+        
+        /* ============================
+                   CONTACT MODAL
+                ============================ */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        .contact-modal.open {
+            display: flex;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .contact-modal-window {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius);
+            max-width: 560px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 36px 32px 28px;
+            position: relative;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+        }
+        
+        .contact-modal-window::-webkit-scrollbar {
+            width: 4px;
+        }
+        .contact-modal-window::-webkit-scrollbar-thumb {
+            background: var(--text-muted);
+            border-radius: 10px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 4px 8px;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            color: var(--text-primary);
+            transform: rotate(90deg);
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .modal-header h2 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .modal-header h2 .highlight {
+            color: var(--text-secondary);
+        }
+        
+        .modal-body p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
             margin-bottom: 20px;
         }
         
-        .contact-info .info-item .icon {
-            width: 44px;
-            height: 44px;
+        .modal-contact-item {
+            display: flex;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        
+        .modal-contact-item .icon {
+            width: 40px;
+            height: 40px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -948,7 +1461,7 @@
             border: 1px solid var(--border-subtle);
         }
         
-        .contact-info .info-item .label {
+        .modal-contact-item .info .label {
             font-size: 11px;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -956,21 +1469,30 @@
             font-weight: 500;
         }
         
-        .contact-info .info-item .value {
+        .modal-contact-item .info .value {
             color: var(--text-primary);
             font-weight: 500;
             font-size: 15px;
         }
         
-        .contact-hours {
+        .modal-contact-item .info .value a {
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        .modal-contact-item .info .value a:hover {
+            color: var(--text-secondary);
+        }
+        
+        .modal-hours {
+            margin-top: 16px;
+            padding: 16px 20px;
             background: var(--bg-dark);
             border-radius: var(--radius);
-            padding: 20px 24px;
-            margin-top: 12px;
             border: 1px solid var(--border-subtle);
         }
         
-        .contact-hours h4 {
+        .modal-hours h4 {
             font-family: var(--font-heading);
             color: var(--text-primary);
             font-size: 15px;
@@ -979,56 +1501,57 @@
             margin-bottom: 10px;
         }
         
-        .contact-hours .row {
+        .modal-hours .row {
             display: flex;
             justify-content: space-between;
-            padding: 5px 0;
+            padding: 4px 0;
             font-size: 14px;
             color: var(--text-secondary);
             border-bottom: 1px solid var(--border-subtle);
         }
         
-        .contact-hours .row:last-child {
+        .modal-hours .row:last-child {
             border-bottom: none;
         }
         
-        .contact-visit-card {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .modal-hours .row .closed {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+        
+        .modal-visit {
+            margin-top: 16px;
+            padding: 20px;
             background: var(--bg-dark);
             border-radius: var(--radius);
             border: 1px solid var(--border-subtle);
-            padding: 30px 20px;
             text-align: center;
-            min-height: 250px;
         }
         
-        .contact-visit-card i {
-            font-size: 40px;
+        .modal-visit i {
+            font-size: 32px;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             display: block;
         }
         
-        .contact-visit-card h3 {
+        .modal-visit h4 {
             font-family: var(--font-heading);
             color: var(--text-primary);
-            font-size: 20px;
+            font-size: 18px;
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            margin-bottom: 6px;
         }
         
-        .contact-visit-card p {
+        .modal-visit p {
             color: var(--text-muted);
             font-size: 14px;
-            max-width: 280px;
-            margin: 0 auto;
+            margin: 4px 0 14px;
         }
         
-        .contact-visit-card .btn {
-            margin-top: 16px;
+        .modal-visit .btn {
+            width: 100%;
+            justify-content: center;
         }
         
         /* ============================
@@ -1137,7 +1660,7 @@
         }
         
         /* ============================
-                   RESPONSIVE BREAKPOINTS
+                   RESPONSIVE
                 ============================ */
         @media (max-width: 1024px) {
             .hero-grid {
@@ -1177,6 +1700,11 @@
             .about-text .features li {
                 justify-content: flex-start;
             }
+            .about-slideshow {
+                max-height: 280px;
+                max-width: 500px;
+                margin: 0 auto;
+            }
             .event-wrapper {
                 flex-direction: column;
                 text-align: center;
@@ -1197,14 +1725,19 @@
                 min-width: 120px;
                 max-width: 200px;
             }
+            .giveaway-grid {
+                grid-template-columns: 1fr 1fr;
+            }
             .promo-banner .actions .btn {
                 flex: 0 1 auto;
                 min-width: 150px;
                 max-width: 220px;
             }
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .whatnot-show-card {
+                max-width: 80%;
+            }
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -1213,12 +1746,19 @@
                 --container-padding: 16px;
                 --header-height: 58px;
             }
-            .nav {
+            
+            .nav a:not(.contact-trigger-btn) {
                 display: none;
             }
+            
+            .nav .contact-trigger-btn {
+                display: none;
+            }
+            
             .hamburger {
                 display: flex;
             }
+            
             .logo-img {
                 width: 32px;
                 height: 32px;
@@ -1226,6 +1766,7 @@
             .logo-text {
                 font-size: 15px;
             }
+            
             .hero {
                 padding: calc(var(--header-height) + 20px) 0 40px;
                 min-height: 90vh;
@@ -1286,6 +1827,13 @@
                 padding: 12px 18px;
                 min-height: 42px;
             }
+            .giveaway-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .giveaway-card {
+                padding: 16px;
+            }
             .promo-banner .actions {
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -1306,6 +1854,11 @@
             }
             .about-text .features li {
                 font-size: 13px;
+            }
+            .about-slideshow {
+                max-height: 240px;
+                max-width: 100%;
+                aspect-ratio: 4 / 3;
             }
             .footer-top {
                 flex-direction: column;
@@ -1331,14 +1884,30 @@
                 flex-direction: column;
                 text-align: center;
             }
-            .contact-visit-card {
-                padding: 24px 16px;
-                min-height: 200px;
+            .whatnot-show-card {
+                max-width: 100%;
             }
-            .contact-visit-card .btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
+            .whatnot-show-card .show-preview {
+                padding: 30px 16px;
+                min-height: 100px;
+            }
+            .whatnot-show-card .show-preview i {
+                font-size: 36px;
+            }
+            .contact-modal-window {
+                padding: 28px 20px 20px;
+                margin: 10px;
+                max-height: 95vh;
+            }
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .product-card .image-placeholder {
+                height: 100px;
+            }
+            .product-card .image-placeholder i {
+                font-size: 32px;
             }
         }
         
@@ -1394,6 +1963,10 @@
             .about-text .features li {
                 justify-content: center;
             }
+            .about-slideshow {
+                max-height: 200px;
+                aspect-ratio: 4 / 3;
+            }
             .event-image {
                 max-width: 100%;
             }
@@ -1409,6 +1982,15 @@
                 padding: 10px 14px;
                 min-height: 38px;
             }
+            .giveaway-card h4 {
+                font-size: 14px;
+            }
+            .giveaway-card p {
+                font-size: 13px;
+            }
+            .giveaway-footer p {
+                font-size: 14px;
+            }
             .promo-banner .actions .btn {
                 min-width: 120px;
                 max-width: 180px;
@@ -1421,10 +2003,58 @@
                 align-items: center;
                 gap: 16px;
             }
-            .contact-hours .row {
+            .whatnot-show-card .show-info h3 {
+                font-size: 14px;
+            }
+            .whatnot-show-card .show-info .stats {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .contact-modal-window {
+                padding: 20px 16px 16px;
+            }
+            .modal-contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .modal-contact-item .icon {
+                width: 36px;
+                height: 36px;
+                font-size: 15px;
+            }
+            .modal-hours .row {
                 font-size: 13px;
                 flex-wrap: wrap;
                 gap: 4px;
+            }
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .product-card {
+                padding: 14px 10px 12px;
+            }
+            .product-card .image-placeholder {
+                height: 80px;
+            }
+            .product-card .image-placeholder i {
+                font-size: 24px;
+            }
+            .product-card h4 {
+                font-size: 13px;
+            }
+            .product-card .price {
+                font-size: 15px;
+            }
+            .product-card .btn {
+                font-size: 10px;
+                padding: 8px;
+                min-height: 32px;
+            }
+            .about-dots .dot {
+                width: 6px;
+                height: 6px;
             }
         }
         
@@ -1460,9 +2090,13 @@
                 padding: 8px 12px;
                 min-height: 34px;
             }
+            .products-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                margin: 0 auto;
+            }
         }
         
-        /* Touch-friendly hover states */
         @media (hover: none) {
             .btn:hover {
                 transform: none !important;
@@ -1476,11 +2110,36 @@
                 background: rgba(255,255,255,0.04);
                 color: var(--text-muted);
             }
+            .whatnot-show-card:hover {
+                transform: none !important;
+                border-color: var(--border-subtle);
+            }
+            .contact-trigger-btn:hover {
+                transform: none !important;
+            }
+            .nav .contact-trigger-btn:hover {
+                transform: none !important;
+                background: transparent;
+                color: var(--text-secondary);
+            }
+            .product-card:hover {
+                transform: none !important;
+                border-color: var(--border-subtle);
+            }
+            .giveaway-card:hover {
+                transform: none !important;
+                background: rgba(0,0,0,0.06);
+            }
+            .about-dots .dot:hover {
+                background: rgba(255,255,255,0.4);
+            }
         }
         
-        /* Reduced motion preference */
         @media (prefers-reduced-motion: reduce) {
             .hero-slide {
+                transition: none !important;
+            }
+            .about-slide {
                 transition: none !important;
             }
             *,
@@ -1489,6 +2148,9 @@
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
+            }
+            .contact-modal {
+                animation: none !important;
             }
         }
     </style>
@@ -1507,7 +2169,10 @@
             <a href="#about">About</a>
             <a href="#shop">Shop</a>
             <a href="#events">Events</a>
-            <a href="#contact">Contact</a>
+            <button class="contact-trigger-btn" id="headerContactBtn">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                Contact
+            </button>
             <a href="/shop" class="btn btn-primary btn-small">Shop Now</a>
         </nav>
         
@@ -1524,13 +2189,15 @@
     <a href="#about">About</a>
     <a href="#shop">Shop</a>
     <a href="#events">Events</a>
-    <a href="#contact">Contact</a>
+    <button class="contact-trigger-btn" id="mobileContactBtn">
+        <i class="fas fa-envelope" aria-hidden="true"></i>
+        Contact Us
+    </button>
     <a href="/shop" class="btn btn-primary">Shop Now</a>
 </div>
 
-<!-- ===== HERO - SLIDESHOW ===== -->
+<!-- ===== HERO ===== -->
 <section class="hero" id="home">
-    <!-- Slideshow Images -->
     <div class="hero-slideshow" aria-hidden="true">
         <div class="hero-slide active" data-index="0"></div>
         <div class="hero-slide" data-index="1"></div>
@@ -1575,7 +2242,6 @@
         </div>
     </div>
     
-    <!-- Slideshow Dots -->
     <div class="hero-dots" role="tablist" aria-label="Slideshow navigation">
         <button class="dot active" data-index="0" role="tab" aria-label="Slide 1" aria-selected="true"></button>
         <button class="dot" data-index="1" role="tab" aria-label="Slide 2" aria-selected="false"></button>
@@ -1633,7 +2299,7 @@
     </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
+<!-- ===== ABOUT - WITH RESIZED SLIDESHOW ===== -->
 <section class="about" id="about">
     <div class="container">
         <div class="about-grid">
@@ -1661,84 +2327,222 @@
                 
                 <a href="#shop" class="btn btn-primary" style="margin-top:6px;"><i class="fas fa-arrow-right" aria-hidden="true"></i> Explore Collection</a>
             </div>
-            <div class="about-image">
-                <img src="//img1.wsimg.com/isteam/getty/494962284/:/cr=t:17.84%25,l:0%25,w:100%25,h:64.32%25/rs=w:600,h:400,cg:true" alt="Collectible cards display" loading="lazy">
+            
+            <!-- Slideshow - Resized -->
+            <div class="about-slideshow" id="aboutSlideshow">
+                <div class="about-slide active" data-index="0" style="background-image: url('https://i.imgur.com/lSHTgC8.png');"></div>
+                <div class="about-slide" data-index="1" style="background-image: url('https://i.imgur.com/gHukRN3.png');"></div>
+                <div class="about-slide" data-index="2" style="background-image: url('https://i.imgur.com/Ch7DV85.png');"></div>
+                <div class="about-slide" data-index="3" style="background-image: url('https://i.imgur.com/6lxr6X7.png');"></div>
+                <div class="about-slide" data-index="4" style="background-image: url('https://i.imgur.com/bptH2ED.png');"></div>
+                
+                <div class="about-dots">
+                    <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+                    <button class="dot" data-index="1" aria-label="Slide 2"></button>
+                    <button class="dot" data-index="2" aria-label="Slide 3"></button>
+                    <button class="dot" data-index="3" aria-label="Slide 4"></button>
+                    <button class="dot" data-index="4" aria-label="Slide 5"></button>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== PROMO BANNER ===== -->
+<!-- ===== PROMO BANNER - WITH GIVEAWAY CONTENT ===== -->
 <section class="promo-banner">
     <div class="container">
-        <h2>Join Our Online Auctions</h2>
-        <p>We're thrilled to invite you to our online auction on the WhatNot auction service!</p>
+        <h2>Join Our <span class="highlight">Online Auctions</span></h2>
+        <p class="subtitle">We're thrilled to invite you to our online auction on the WhatNot auction service!</p>
+        
+        <!-- Whatnot Show Card -->
+        <div class="whatnot-show-card">
+            <a href="https://www.whatnot.com/s/0jMzzmvP" target="_blank" rel="noopener noreferrer">
+                <div class="show-preview">
+                    <i class="fas fa-play-circle"></i>
+                    <span class="live-badge">● Live Show</span>
+                    <span class="watch-text">Watch the latest break</span>
+                </div>
+                <div class="show-info">
+                    <h3>Huge 12 Mega Box NBA Select 23-24 Break!!!!</h3>
+                    <p class="host">Hosted by <strong>jjckcollectibles</strong></p>
+                    <div class="stats">
+                        <span><i class="fas fa-star rating"></i> 5.0★</span>
+                        <span><i class="fas fa-box"></i> 6,091 items sold</span>
+                        <span><i class="fas fa-users"></i> 3.3K followers</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Facebook Giveaway Section -->
+        <div style="margin: 28px 0 16px; border-top: 2px solid rgba(0,0,0,0.08); padding-top: 24px;">
+            <h2 style="font-size: clamp(20px, 2.5vw, 28px); margin-bottom: 4px;">
+                <i class="fab fa-facebook" style="color: #1877f2; margin-right: 10px;"></i>
+                Facebook Weekly <span class="highlight">Giveaways</span>
+            </h2>
+            <p class="subtitle" style="max-width: 700px; margin: 0 auto 16px;">
+                Win Big with In-Store Purchases!
+            </p>
+            <p class="subtitle" style="max-width: 700px; margin: 0 auto 20px; font-size: clamp(14px, 1.1vw, 16px);">
+                Exciting news for our customers! We're hosting weekly giveaways on Facebook, and you could be the lucky winner. Here's how it works:
+            </p>
+        </div>
+        
+        <!-- Giveaway Steps -->
+        <div class="giveaway-grid">
+            <div class="giveaway-card">
+                <div class="step-number">1</div>
+                <h4>Make an In-Store Purchase</h4>
+                <p>Every time you shop with us, you'll receive a special <strong>ticket</strong> with your purchase.</p>
+            </div>
+            
+            <div class="giveaway-card">
+                <div class="step-number">2</div>
+                <h4>Get a Chance to Win</h4>
+                <p>Each ticket gives you a shot at winning our weekly giveaway! We'll be announcing the winner <strong>LIVE</strong> on our Facebook page every week.</p>
+            </div>
+            
+            <div class="giveaway-card" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto; width: 100%;">
+                <div class="step-number">3</div>
+                <h4>Tune in to Our Live Event</h4>
+                <p>Watch our Facebook page for the live drawing, where we'll announce the winner in <strong>real time</strong>.</p>
+            </div>
+        </div>
+        
+        <!-- Giveaway Footer -->
+        <div class="giveaway-footer">
+            <p>
+                <strong>The more you shop, the more chances you have to win!</strong> 
+                Don't miss out on this fun and exciting opportunity—head in-store today and join our weekly Facebook giveaway!
+            </p>
+        </div>
+        
         <div class="actions">
-            <a href="https://www.whatnot.com/user/jjckcollectibles" target="_blank" class="btn btn-primary"><i class="fas fa-gavel" aria-hidden="true"></i> WhatNot</a>
-            <a href="https://www.facebook.com/jjckcollectibles" target="_blank" class="btn btn-outline"><i class="fab fa-facebook-f" aria-hidden="true"></i> Giveaways</a>
+            <a href="https://www.whatnot.com/s/0jMzzmvP" target="_blank" class="btn btn-yellow"><i class="fas fa-gavel" aria-hidden="true"></i> Watch Live Show</a>
+            <a href="https://www.facebook.com/jjckcollectibles" target="_blank" class="btn btn-outline-yellow"><i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook Giveaways</a>
         </div>
     </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
-<section class="contact" id="contact">
+<!-- ===== FEATURED PRODUCTS ===== -->
+<section class="featured-products" id="products">
     <div class="container">
         <div class="section-header">
-            <span class="tag">Get in Touch</span>
-            <h2>Let's <span class="highlight">Connect</span></h2>
+            <span class="tag">Top Picks</span>
+            <h2>Featured <span class="highlight">Products</span></h2>
+            <p>Explore our most popular collectibles and cards</p>
             <div class="line"></div>
         </div>
         
-        <div class="contact-grid">
-            <div class="contact-info">
-                <p style="font-size:15px;color:var(--text-secondary);margin-bottom:24px;"><strong style="color:var(--text-primary);">JJCK Collectibles</strong> is your go-to hobby shop for sports cards, memorabilia, and collectibles in Port St. Lucie. Questions, trades, or special requests? Just reach out!</p>
-                
-                <div class="info-item">
-                    <div class="icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
-                    <div>
-                        <div class="label">Address</div>
-                        <div class="value">1344 SW Bayshore Blvd, Port St. Lucie, FL 34983</div>
-                    </div>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="image-placeholder">
+                    <i class="fas fa-image"></i>
                 </div>
-                
-                <div class="info-item">
-                    <div class="icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
-                    <div>
-                        <div class="label">Phone</div>
-                        <div class="value">1-772-249-5036</div>
-                    </div>
-                </div>
-                
-                <div class="info-item">
-                    <div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-                    <div>
-                        <div class="label">Email</div>
-                        <div class="value">jjckcollectibles@gmail.com</div>
-                    </div>
-                </div>
-                
-                <div class="contact-hours">
-                    <h4><i class="fas fa-clock" style="color:var(--text-muted);margin-right:8px;" aria-hidden="true"></i> Business Hours</h4>
-                    <div class="row"><span>Monday - Wednesday</span><span>10:00 AM – 6:00 PM</span></div>
-                    <div class="row"><span>Thursday - Saturday</span><span>10:00 AM – 6:00 PM</span></div>
-                    <div class="row"><span>Sunday</span><span>12:00 PM – 4:00 PM</span></div>
-                    <div class="row" style="color:var(--text-muted);font-size:12px;border-bottom:none;"><span>Closed on major holidays</span></div>
-                </div>
+                <span class="badge">Hot</span>
+                <h4>Product Name</h4>
+                <p class="category">Category</p>
+                <div class="price">$XX.XX</div>
+                <a href="#shop" class="btn btn-primary">View Product</a>
             </div>
             
-            <div class="contact-visit-card">
-                <div>
-                    <i class="fas fa-store" aria-hidden="true"></i>
-                    <h3>Visit Us In-Store</h3>
-                    <p>Stop by and browse our collection in person. We'd love to meet you!</p>
-                    <a href="https://maps.google.com/?q=1344+SW+Bayshore+Blvd+Port+St.+Lucie+FL+34983" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-directions" aria-hidden="true"></i> Get Directions
-                    </a>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="image-placeholder">
+                    <i class="fas fa-image"></i>
                 </div>
+                <span class="badge">New</span>
+                <h4>Product Name</h4>
+                <p class="category">Category</p>
+                <div class="price">$XX.XX</div>
+                <a href="#shop" class="btn btn-primary">View Product</a>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="image-placeholder">
+                    <i class="fas fa-image"></i>
+                </div>
+                <span class="badge">Hot</span>
+                <h4>Product Name</h4>
+                <p class="category">Category</p>
+                <div class="price">$XX.XX</div>
+                <a href="#shop" class="btn btn-primary">View Product</a>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="image-placeholder">
+                    <i class="fas fa-image"></i>
+                </div>
+                <span class="badge">New</span>
+                <h4>Product Name</h4>
+                <p class="category">Category</p>
+                <div class="price">$XX.XX</div>
+                <a href="#shop" class="btn btn-primary">View Product</a>
             </div>
         </div>
     </div>
 </section>
+
+<!-- ===== CONTACT MODAL ===== -->
+<div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="contact-modal-window">
+        <button class="modal-close" id="modalClose" aria-label="Close contact window">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="modal-header">
+            <h2 id="modalTitle">Contact <span class="highlight">JJCK Collectibles</span></h2>
+        </div>
+        
+        <div class="modal-body">
+            <p>JJCK Collectibles is your go-to hobby shop for sports cards, memorabilia, and collectibles in Port St. Lucie. Questions, trades, or special requests? Just reach out!</p>
+            
+            <div class="modal-contact-item">
+                <div class="icon"><i class="fas fa-map-pin"></i></div>
+                <div class="info">
+                    <div class="label">Address</div>
+                    <div class="value">1344 SW Bayshore Blvd, Port St. Lucie, FL 34983</div>
+                </div>
+            </div>
+            
+            <div class="modal-contact-item">
+                <div class="icon"><i class="fas fa-phone"></i></div>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:17722495036">1-772-249-5036</a></div>
+                </div>
+            </div>
+            
+            <div class="modal-contact-item">
+                <div class="icon"><i class="fas fa-envelope"></i></div>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:jjckcollectibles@gmail.com">jjckcollectibles@gmail.com</a></div>
+                </div>
+            </div>
+            
+            <div class="modal-hours">
+                <h4><i class="fas fa-clock" style="color:var(--text-muted);margin-right:8px;"></i> Business Hours</h4>
+                <div class="row"><span>Monday - Wednesday</span><span>10:00 AM – 6:00 PM</span></div>
+                <div class="row"><span>Thursday - Saturday</span><span>10:00 AM – 6:00 PM</span></div>
+                <div class="row"><span>Sunday</span><span>12:00 PM – 4:00 PM</span></div>
+                <div class="row"><span class="closed">Closed on major holidays</span></div>
+            </div>
+            
+            <div class="modal-visit">
+                <i class="fas fa-store"></i>
+                <h4>Visit Us In-Store</h4>
+                <p>Stop by and browse our collection in person. We'd love to meet you!</p>
+                <a href="https://maps.google.com/?q=1344+SW+Bayshore+Blvd+Port+St.+Lucie+FL+34983" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-directions" aria-hidden="true"></i> Get Directions
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
@@ -1759,7 +2563,7 @@
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#shop">Shop</a></li>
                         <li><a href="#events">Events</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#products">Featured Products</a></li>
                     </ul>
                 </div>
                 
@@ -1852,7 +2656,7 @@
         
         // ===== ACTIVE NAV LINK =====
         const sections = document.querySelectorAll('section[id]');
-        const navLinksList = document.querySelectorAll('.nav a:not(.btn), .mobile-nav a:not(.btn)');
+        const navLinksList = document.querySelectorAll('.nav a:not(.btn):not(.contact-trigger-btn), .mobile-nav a:not(.btn):not(.contact-trigger-btn)');
         let activeTimeout;
         
         window.addEventListener('scroll', function() {
@@ -1877,112 +2681,217 @@
         }, { passive: true });
         
         // ===== HERO SLIDESHOW =====
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.hero-dots .dot');
-        let currentIndex = 0;
-        let slideInterval;
-        const SLIDE_DURATION = 5000; // 5 seconds
-        const FADE_DURATION = 1000; // 1 second
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const heroDots = document.querySelectorAll('.hero-dots .dot');
+        let heroCurrentIndex = 0;
+        let heroInterval;
+        const HERO_SLIDE_DURATION = 5000;
+        const HERO_FADE_DURATION = 1000;
         
-        function goToSlide(index) {
-            // Remove active class from all slides and dots
-            slides.forEach(function(slide) {
+        function goToHeroSlide(index) {
+            heroSlides.forEach(function(slide) {
                 slide.classList.remove('active');
             });
-            dots.forEach(function(dot) {
+            heroDots.forEach(function(dot) {
                 dot.classList.remove('active');
                 dot.setAttribute('aria-selected', 'false');
             });
             
-            // Add active class to current slide and dot
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-            dots[index].setAttribute('aria-selected', 'true');
-            currentIndex = index;
+            heroSlides[index].classList.add('active');
+            heroDots[index].classList.add('active');
+            heroDots[index].setAttribute('aria-selected', 'true');
+            heroCurrentIndex = index;
         }
         
-        function nextSlide() {
-            const nextIndex = (currentIndex + 1) % slides.length;
-            goToSlide(nextIndex);
+        function nextHeroSlide() {
+            const nextIndex = (heroCurrentIndex + 1) % heroSlides.length;
+            goToHeroSlide(nextIndex);
         }
         
-        function startSlideshow() {
-            if (slideInterval) {
-                clearInterval(slideInterval);
+        function startHeroSlideshow() {
+            if (heroInterval) {
+                clearInterval(heroInterval);
             }
-            slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+            heroInterval = setInterval(nextHeroSlide, HERO_SLIDE_DURATION);
         }
         
-        function stopSlideshow() {
-            if (slideInterval) {
-                clearInterval(slideInterval);
-                slideInterval = null;
+        function stopHeroSlideshow() {
+            if (heroInterval) {
+                clearInterval(heroInterval);
+                heroInterval = null;
             }
         }
         
-        // Dot click handlers
-        dots.forEach(function(dot, index) {
+        heroDots.forEach(function(dot, index) {
             dot.addEventListener('click', function() {
-                stopSlideshow();
-                goToSlide(index);
-                // Restart the timer after manual interaction
-                setTimeout(startSlideshow, FADE_DURATION + 500);
+                stopHeroSlideshow();
+                goToHeroSlide(index);
+                setTimeout(startHeroSlideshow, HERO_FADE_DURATION + 500);
             });
         });
         
-        // Touch/swipe support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
+        let heroTouchStartX = 0;
+        let heroTouchEndX = 0;
         const heroSection = document.querySelector('.hero');
         
         heroSection.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
+            heroTouchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
         
         heroSection.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            const swipeDistance = touchStartX - touchEndX;
+            heroTouchEndX = e.changedTouches[0].screenX;
+            const swipeDistance = heroTouchStartX - heroTouchEndX;
             if (Math.abs(swipeDistance) > 50) {
-                stopSlideshow();
+                stopHeroSlideshow();
                 if (swipeDistance > 0) {
-                    // Swipe left - next slide
-                    nextSlide();
+                    nextHeroSlide();
                 } else {
-                    // Swipe right - previous slide
-                    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-                    goToSlide(prevIndex);
+                    const prevIndex = (heroCurrentIndex - 1 + heroSlides.length) % heroSlides.length;
+                    goToHeroSlide(prevIndex);
                 }
-                setTimeout(startSlideshow, FADE_DURATION + 500);
+                setTimeout(startHeroSlideshow, HERO_FADE_DURATION + 500);
             }
         }, { passive: true });
         
-        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowRight') {
-                stopSlideshow();
-                nextSlide();
-                setTimeout(startSlideshow, FADE_DURATION + 500);
+                stopHeroSlideshow();
+                nextHeroSlide();
+                setTimeout(startHeroSlideshow, HERO_FADE_DURATION + 500);
             } else if (e.key === 'ArrowLeft') {
-                stopSlideshow();
-                const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-                goToSlide(prevIndex);
-                setTimeout(startSlideshow, FADE_DURATION + 500);
+                stopHeroSlideshow();
+                const prevIndex = (heroCurrentIndex - 1 + heroSlides.length) % heroSlides.length;
+                goToHeroSlide(prevIndex);
+                setTimeout(startHeroSlideshow, HERO_FADE_DURATION + 500);
             }
         });
         
-        // Pause on hover
-        heroSection.addEventListener('mouseenter', stopSlideshow);
-        heroSection.addEventListener('mouseleave', startSlideshow);
+        heroSection.addEventListener('mouseenter', stopHeroSlideshow);
+        heroSection.addEventListener('mouseleave', startHeroSlideshow);
         
-        // Start the slideshow
-        startSlideshow();
+        startHeroSlideshow();
         
-        // Handle visibility change (pause when tab is hidden)
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
-                stopSlideshow();
+                stopHeroSlideshow();
             } else {
-                startSlideshow();
+                startHeroSlideshow();
+            }
+        });
+        
+        // ===== ABOUT SLIDESHOW =====
+        const aboutSlides = document.querySelectorAll('.about-slide');
+        const aboutDots = document.querySelectorAll('.about-dots .dot');
+        let aboutCurrentIndex = 0;
+        let aboutInterval;
+        const ABOUT_SLIDE_DURATION = 5000;
+        const ABOUT_FADE_DURATION = 1000;
+        
+        function goToAboutSlide(index) {
+            aboutSlides.forEach(function(slide) {
+                slide.classList.remove('active');
+            });
+            aboutDots.forEach(function(dot) {
+                dot.classList.remove('active');
+            });
+            
+            aboutSlides[index].classList.add('active');
+            aboutDots[index].classList.add('active');
+            aboutCurrentIndex = index;
+        }
+        
+        function nextAboutSlide() {
+            const nextIndex = (aboutCurrentIndex + 1) % aboutSlides.length;
+            goToAboutSlide(nextIndex);
+        }
+        
+        function startAboutSlideshow() {
+            if (aboutInterval) {
+                clearInterval(aboutInterval);
+            }
+            aboutInterval = setInterval(nextAboutSlide, ABOUT_SLIDE_DURATION);
+        }
+        
+        function stopAboutSlideshow() {
+            if (aboutInterval) {
+                clearInterval(aboutInterval);
+                aboutInterval = null;
+            }
+        }
+        
+        aboutDots.forEach(function(dot, index) {
+            dot.addEventListener('click', function() {
+                stopAboutSlideshow();
+                goToAboutSlide(index);
+                setTimeout(startAboutSlideshow, ABOUT_FADE_DURATION + 500);
+            });
+        });
+        
+        const aboutSlideshowContainer = document.getElementById('aboutSlideshow');
+        if (aboutSlideshowContainer) {
+            aboutSlideshowContainer.addEventListener('mouseenter', stopAboutSlideshow);
+            aboutSlideshowContainer.addEventListener('mouseleave', startAboutSlideshow);
+        }
+        
+        startAboutSlideshow();
+        
+        // ===== CONTACT MODAL =====
+        const modal = document.getElementById('contactModal');
+        const closeBtn = document.getElementById('modalClose');
+        
+        const triggerButtons = [
+            document.getElementById('headerContactBtn'),
+            document.getElementById('mobileContactBtn')
+        ];
+        
+        function openModal() {
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            setTimeout(function() {
+                closeBtn.focus();
+            }, 100);
+        }
+        
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        
+        triggerButtons.forEach(function(btn) {
+            if (btn) {
+                btn.addEventListener('click', openModal);
+            }
+        });
+        
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeModal);
+        }
+        
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
+        
+        modal.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                const focusable = modal.querySelectorAll('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                const firstFocusable = focusable[0];
+                const lastFocusable = focusable[focusable.length - 1];
+                
+                if (e.shiftKey && document.activeElement === firstFocusable) {
+                    e.preventDefault();
+                    lastFocusable.focus();
+                } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+                    e.preventDefault();
+                    firstFocusable.focus();
+                }
             }
         });
         
