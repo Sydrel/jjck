@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJCK Collectibles | Premium Sports Cards & Collectibles</title>
+    <meta name="description" content="Discover JJCK Collectibles, the Treasure Coast's ultimate family-owned shop for sports cards, Pokémon, One Piece, Magic, Lorcana & more.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ============================
+                   CSS VARIABLES - BLACK & WHITE ONLY
+                ============================ */
+        :root {
+            --bg-dark: #000000;
+            --bg-card: #0a0a0a;
+            --bg-card-hover: #141414;
+            --bg-light: #1a1a1a;
+            --bg-gray: #222222;
+            --bg-off-white: #f5f5f5;
+            
+            --text-primary: #ffffff;
+            --text-secondary: #bbbbbb;
+            --text-muted: #777777;
+            --text-dark: #000000;
+            
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-medium: rgba(255,255,255,0.12);
+            
+            --shadow-glow: 0 0 60px rgba(255,255,255,0.03);
+            
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            
+            --radius: 12px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* ============================
+                   RESET & BASE
+                ============================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-dark);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* ============================
+                   SCROLLBAR
+                ============================ */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-muted);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+        
+        /* ============================
+                   BUTTONS - B&W ONLY
+                ============================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--text-dark);
+        }
+        
+        .btn-primary:hover {
+            background: var(--text-secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--text-muted);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--text-primary);
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-3px);
+        }
+        
+        .btn-small {
+            padding: 10px 24px;
+            font-size: 12px;
+        }
+        
+        /* ============================
+                   SECTION HEADERS
+                ============================ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        
+        .section-header .tag {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 4.5vw, 48px);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-header h2 .highlight {
+            color: var(--text-secondary);
+        }
+        
+        .section-header p {
+            max-width: 580px;
+            margin: 12px auto 0;
+            color: var(--text-muted);
+            font-size: 17px;
+        }
+        
+        .section-header .line {
+            width: 60px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 16px auto 0;
+        }
+        
+        /* ============================
+                   HEADER / NAV
+                ============================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+        
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 10px 0;
+        }
+        
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--text-muted);
+        }
+        
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .logo-text span {
+            color: var(--text-muted);
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+        
+        .nav a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+        
+        .nav a:hover {
+            color: var(--text-primary);
+        }
+        
+        .nav a:hover::after {
+            width: 100%;
+        }
+        
+        .nav a.active {
+            color: var(--text-primary);
+        }
+        
+        .nav a.active::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        /* ============================
+                   HERO - B&W
+                ============================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: var(--bg-dark);
+            overflow: hidden;
+            padding: 120px 0 80px;
+        }
+        
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.02) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(255,255,255,0.015) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 6px 16px 6px 8px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            animation: pulse-dot 1.5s infinite;
+        }
+        
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+        
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(40px, 6vw, 68px);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        
+        .hero h1 .highlight {
+            color: var(--text-secondary);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+        
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 0;
+        }
+        
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .hero-image-wrapper img {
+            border-radius: var(--radius);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+            border: 1px solid var(--border-subtle);
+            width: 100%;
+        }
+        
+        .hero-image-wrapper .floating-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 16px 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-glow);
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .hero-image-wrapper .floating-badge .big {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .hero-image-wrapper .floating-badge .small {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* ============================
+                   SOCIAL STRIP - B&W
+                ============================ */
+        .social-strip {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 16px 0;
+        }
+        
+        .social-strip .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .social-strip .label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .social-strip .icons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-strip .icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .social-strip .icons a:hover {
+            background: var(--text-primary);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* ============================
+                   FEATURED EVENT - FIXED SIDE BY SIDE
+                ============================ */
+        .featured-event {
+            padding: 80px 0;
+            background: var(--bg-card);
+        }
+        
+        .event-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .event-image {
+            flex: 0 0 40%;
+            max-width: 40%;
+        }
+        
+        .event-image img {
+            border-radius: var(--radius);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-subtle);
+            width: 100%;
+            height: auto;
+        }
+        
+        .event-content {
+            flex: 1;
+        }
+        
+        .event-content .tag {
+            display: inline-block;
+            background: var(--text-primary);
+            color: var(--text-dark);
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 4px 16px;
+            border-radius: 2px;
+            margin-bottom: 12px;
+        }
+        
+        .event-content h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 4vw, 44px);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            line-height: 1.1;
+        }
+        
+        .event-content h2 .highlight {
+            color: var(--text-secondary);
+        }
+        
+        .event-content .description {
+            color: var(--text-secondary);
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+        
+        .event-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+        
+        .event-meta .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .event-meta .item i {
+            color: var(--text-muted);
+            font-size: 18px;
+            width: 20px;
+        }
+        
+        .event-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        /* ============================
+                   ABOUT - B&W
+                ============================ */
+        .about {
+            padding: 80px 0;
+            background: var(--bg-dark);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text .section-header {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        
+        .about-text .section-header .line {
+            margin: 12px 0 0;
+        }
+        
+        .about-text p {
+            color: var(--text-secondary);
+            font-size: 17px;
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+        
+        .about-text .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 24px;
+            margin: 20px 0 28px;
+        }
+        
+        .about-text .features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        
+        .about-text .features li i {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        .about-image img {
+            border-radius: var(--radius);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            width: 100%;
+            border: 1px solid var(--border-subtle);
+            filter: grayscale(100%);
+        }
+        
+        /* ============================
+                   PROMO BANNER - B&W
+                ============================ */
+        .promo-banner {
+            padding: 60px 0;
+            background: var(--bg-light);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .promo-banner .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .promo-banner h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(28px, 3.5vw, 38px);
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .promo-banner p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 500px;
+            margin: 0 auto 28px;
+        }
+        
+        .promo-banner .actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+        }
+        
+        /* ============================
+                   CONTACT - B&W
+                ============================ */
+        .contact {
+            padding: 80px 0;
+            background: var(--bg-card);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .contact-info .info-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .contact-info .info-item .icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            color: var(--text-secondary);
+            font-size: 20px;
+            border: 1px solid var(--border-subtle);
+        }
+        
+        .contact-info .info-item .label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        
+        .contact-info .info-item .value {
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .contact-hours {
+            background: var(--bg-dark);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin-top: 16px;
+            border: 1px solid var(--border-subtle);
+        }
+        
+        .contact-hours h4 {
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        
+        .contact-hours .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 15px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .contact-hours .row:last-child {
+            border-bottom: none;
+        }
+        
+        .contact-visit-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-dark);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-subtle);
+            padding: 40px;
+            text-align: center;
+            min-height: 300px;
+        }
+        
+        .contact-visit-card i {
+            font-size: 48px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        .contact-visit-card h3 {
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .contact-visit-card p {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .contact-visit-card .btn {
+            margin-top: 20px;
+        }
+        
+        /* ============================
+                   FOOTER - COMPACT HORIZONTAL LAYOUT
+                ============================ */
+        .footer {
+            background: var(--bg-dark);
+            border-top: 1px solid var(--border-subtle);
+            padding: 40px 0 24px;
+        }
+        
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px 60px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .footer-brand {
+            flex: 0 0 220px;
+        }
+        
+        .footer-brand .logo {
+            margin-bottom: 8px;
+        }
+        
+        .footer-brand .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--text-muted);
+        }
+        
+        .footer-brand .logo-text {
+            font-size: 20px;
+        }
+        
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px 60px;
+        }
+        
+        .footer-links .col h4 {
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links .col ul li {
+            margin-bottom: 4px;
+        }
+        
+        .footer-links .col ul li a {
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        
+        .footer-links .col ul li a:hover {
+            color: var(--text-primary);
+        }
+        
+        .footer-bottom {
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        
+        .footer-bottom .social {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .footer-bottom .social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            color: var(--text-muted);
+            font-size: 13px;
+            transition: var(--transition);
+        }
+        
+        .footer-bottom .social a:hover {
+            background: var(--text-primary);
+            color: var(--text-dark);
+        }
+        
+        /* ============================
+                   RESPONSIVE
+                ============================ */
+        @media (max-width: 1024px) {
+            .hero-grid,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-grid {
+                text-align: center;
+            }
+            
+            .hero p {
+                margin: 0 auto 32px;
+            }
+            
+            .hero-actions {
+                justify-content: center;
+            }
+            
+            .about-text .section-header {
+                text-align: center;
+            }
+            
+            .about-text .section-header .line {
+                margin: 12px auto 0;
+            }
+            
+            .about-text .features {
+                justify-items: center;
+                text-align: left;
+            }
+            
+            .about-text .features li {
+                justify-content: flex-start;
+            }
+            
+            .event-wrapper {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .event-image {
+                flex: 0 0 auto;
+                max-width: 60%;
+            }
+            
+            .event-meta {
+                justify-content: center;
+            }
+            
+            .event-actions {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-dark);
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+            
+            .nav.open {
+                display: flex;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hero-image-wrapper .floating-badge {
+                position: relative;
+                bottom: 0;
+                right: 0;
+                margin-top: 16px;
+            }
+            
+            .event-image {
+                max-width: 80%;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-top {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 24px;
+            }
+            
+            .footer-brand {
+                flex: 0 0 auto;
+                text-align: center;
+            }
+            
+            .footer-brand .logo {
+                justify-content: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+                gap: 24px 40px;
+            }
+            
+            .footer-links .col {
+                text-align: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .about-text .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .promo-banner .actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+            
+            .event-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+    <div class="container">
+        <a href="#" class="logo">
+            <img class="logo-img" src="https://i.imgur.com/gwK9qLo.png" alt="JJCK Collectibles">
+            <span class="logo-text">JJCK<span>Collectibles</span></span>
+        </a>
+        
+        <nav class="nav" id="nav">
+            <a href="#about">About</a>
+            <a href="#shop">Shop</a>
+            <a href="#events">Events</a>
+            <a href="#contact">Contact</a>
+            <a href="/shop" class="btn btn-primary btn-small">Shop Now</a>
+        </nav>
+        
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+    <div class="hero-bg-pattern"></div>
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    Treasure Coast's #1 Card Shop
+                </div>
+                <h1>Where <span class="highlight">Collectors</span> Become Family</h1>
+                <p>Sports cards, Pokémon, One Piece, Magic, Lorcana &amp; more. Family-owned and community-driven since day one.</p>
+                
+                <div class="hero-actions">
+                    <a href="#shop" class="btn btn-primary"><i class="fas fa-store"></i> Visit Shop</a>
+                    <a href="#events" class="btn btn-outline"><i class="fas fa-calendar-alt"></i> Events</a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <img src="//img1.wsimg.com/isteam/ip/7c68d443-7c2c-4c2f-860f-93c5bf87afbb/JJCK%20front-3aca283.jpeg/:/rs=w:600,h:450,cg:true,m" alt="JJCK Collectibles Storefront">
+                    <div class="floating-badge">
+                        <div class="big">10AM-6PM</div>
+                        <div class="small">Mon-Sat • Sun 12-4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SOCIAL STRIP ===== -->
+<div class="social-strip">
+    <div class="container">
+        <span class="label"><i class="fas fa-share-alt" style="margin-right:8px;"></i> Connect With Us</span>
+        <div class="icons">
+            <a href="https://www.facebook.com/jjckcollectibles" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/jjckcollectibles/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@jjckcollectibles" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@JJCKCollectibles" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.yelp.com/biz/jjck-collectibles-port-st-lucie" target="_blank"><i class="fab fa-yelp"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FEATURED EVENT - SIDE BY SIDE ===== -->
+<section class="featured-event" id="events">
+    <div class="container">
+        <div class="event-wrapper">
+            <div class="event-image">
+                <img src="//img1.wsimg.com/isteam/ip/7c68d443-7c2c-4c2f-860f-93c5bf87afbb/Midflorida_%20Flyer_2026%20.png/:/rs=w:600,h:450,cg:true,m" alt="MIDFLORIDA Card Expo">
+            </div>
+            <div class="event-content">
+                <span class="tag">Upcoming Event</span>
+                <h2>MIDFLORIDA <span class="highlight">Card Expo</span></h2>
+                <p class="description">230+ tables of sports cards, Pokémon, TCGs, comics &amp; more!</p>
+                
+                <div class="event-meta">
+                    <div class="item"><i class="fas fa-calendar-alt"></i> Coming Soon</div>
+                    <div class="item"><i class="fas fa-map-marker-alt"></i> MIDFLORIDA Event Center</div>
+                    <div class="item"><i class="fas fa-ticket-alt"></i> Tickets Available</div>
+                </div>
+                
+                <div class="event-actions">
+                    <a href="https://www.simpletix.com/e/midflorida-card-expo-tickets-255962" target="_blank" class="btn btn-primary">Get Tickets</a>
+                    <a href="https://www.instagram.com/midfloridacardexpo/" target="_blank" class="btn btn-outline">Follow @midfloridacardexpo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="section-header">
+                    <span class="tag">About Us</span>
+                    <h2>Your Home for <span class="highlight">Cards &amp; Community</span></h2>
+                    <div class="line"></div>
+                </div>
+                
+                <p>Welcome to <strong style="color:var(--text-primary);">JJCK Collectibles</strong>, the Treasure Coast's premier <strong style="color:var(--text-primary);">family-owned sports card and collectibles shop</strong>! We specialize in a wide range of trading cards and collectibles, including Topps, Panini, Pokémon, One Piece, Magic: The Gathering, Lorcana, and more.</p>
+                
+                <p>Located in a welcoming, family-friendly environment, our knowledgeable team is here to help beginners and seasoned collectors alike find the perfect additions to their collections.</p>
+                
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Sports Cards</li>
+                    <li><i class="fas fa-check-circle"></i> Pokémon</li>
+                    <li><i class="fas fa-check-circle"></i> One Piece</li>
+                    <li><i class="fas fa-check-circle"></i> Magic &amp; Lorcana</li>
+                    <li><i class="fas fa-check-circle"></i> Rare Memorabilia</li>
+                    <li><i class="fas fa-check-circle"></i> Trading Cards</li>
+                </ul>
+                
+                <p>At <strong style="color:var(--text-primary);">JJCK Collectibles</strong>, we're more than just a shop — we're a community built on a shared love for collecting.</p>
+                
+                <a href="#shop" class="btn btn-primary" style="margin-top:8px;"><i class="fas fa-arrow-right"></i> Explore Collection</a>
+            </div>
+            <div class="about-image">
+                <img src="//img1.wsimg.com/isteam/getty/494962284/:/cr=t:17.84%25,l:0%25,w:100%25,h:64.32%25/rs=w:600,h:400,cg:true" alt="Collectible Cards Display">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROMO BANNER ===== -->
+<section class="promo-banner">
+    <div class="container">
+        <h2>Join Our Online Auctions</h2>
+        <p>We're thrilled to invite you to our online auction on the WhatNot auction service!</p>
+        <div class="actions">
+            <a href="https://www.whatnot.com/user/jjckcollectibles" target="_blank" class="btn btn-primary"><i class="fas fa-gavel"></i> WhatNot Auction</a>
+            <a href="https://www.facebook.com/jjckcollectibles" target="_blank" class="btn btn-outline"><i class="fab fa-facebook-f"></i> Facebook Giveaways</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="section-header">
+            <span class="tag">Get in Touch</span>
+            <h2>Let's <span class="highlight">Connect</span></h2>
+            <div class="line"></div>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <p style="font-size:17px;color:var(--text-secondary);margin-bottom:32px;"><strong style="color:var(--text-primary);">JJCK Collectibles</strong> is your go-to hobby shop for sports cards, memorabilia, and collectibles in Port St. Lucie. Questions, trades, or special requests? Just reach out!</p>
+                
+                <div class="info-item">
+                    <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <div class="label">Address</div>
+                        <div class="value">1344 SW Bayshore Blvd, Port St. Lucie, FL 34983</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <div class="label">Phone</div>
+                        <div class="value">1-772-249-5036</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <div class="label">Email</div>
+                        <div class="value">jjckcollectibles@gmail.com</div>
+                    </div>
+                </div>
+                
+                <div class="contact-hours">
+                    <h4><i class="fas fa-clock" style="color:var(--text-muted);margin-right:10px;"></i> Business Hours</h4>
+                    <div class="row"><span>Monday - Wednesday</span><span>10:00 AM – 6:00 PM</span></div>
+                    <div class="row"><span>Thursday - Saturday</span><span>10:00 AM – 6:00 PM</span></div>
+                    <div class="row"><span>Sunday</span><span>12:00 PM – 4:00 PM</span></div>
+                    <div class="row" style="color:var(--text-muted);font-size:13px;border-bottom:none;"><span>Closed on major holidays</span></div>
+                </div>
+            </div>
+            
+            <!-- Visit In-Store Card -->
+            <div class="contact-visit-card">
+                <div>
+                    <i class="fas fa-store"></i>
+                    <h3>Visit Us In-Store</h3>
+                    <p>Stop by and browse our collection in person. We'd love to meet you!</p>
+                    <a href="https://maps.google.com/?q=1344+SW+Bayshore+Blvd+Port+St.+Lucie+FL+34983" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER - COMPACT HORIZONTAL LAYOUT ===== -->
+<footer class="footer">
+    <div class="container">
+        <!-- Top Section: Brand + Links in horizontal rows -->
+        <div class="footer-top">
+            <!-- Brand -->
+            <div class="footer-brand">
+                <div class="logo">
+                    <img class="logo-img" src="https://i.imgur.com/gwK9qLo.png" alt="JJCK Collectibles">
+                    <span class="logo-text">JJCK<span>Collectibles</span></span>
+                </div>
+                <p>Treasure Coast's premier family-owned sports card and collectibles shop.</p>
+            </div>
+            
+            <!-- Links: Quick Links, Community, Legal - all in one horizontal row -->
+            <div class="footer-links">
+                <!-- Quick Links -->
+                <div class="col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Community -->
+                <div class="col">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://www.facebook.com/jjckcollectibles" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/jjckcollectibles/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.tiktok.com/@jjckcollectibles" target="_blank">TikTok</a></li>
+                        <li><a href="https://www.youtube.com/@JJCKCollectibles" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Legal -->
+                <div class="col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Section -->
+        <div class="footer-bottom">
+            <span>&copy; 2026 JJCK Collectible's LLC. All Rights Reserved.</span>
+            <div class="social">
+                <a href="https://www.facebook.com/jjckcollectibles" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/jjckcollectibles/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@jjckcollectibles" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@JJCKCollectibles" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.yelp.com/biz/jjck-collectibles-port-st-lucie" target="_blank"><i class="fab fa-yelp"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('open');
+    });
+    
+    document.querySelectorAll('.nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            nav.classList.remove('open');
+        });
+    });
+    
+    // Header scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav a:not(.btn)');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const top = section.offsetTop - 120;
+            if (window.scrollY >= top) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
