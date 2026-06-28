@@ -16,21 +16,6 @@
     
     <style>
         /* ============================
-                   HIDE SCROLLBAR
-                ============================ */
-        ::-webkit-scrollbar {
-            width: 0px;
-            height: 0px;
-            background: transparent;
-        }
-        html {
-            scrollbar-width: none;
-        }
-        body {
-            -ms-overflow-style: none;
-        }
-        
-        /* ============================
                    CSS VARIABLES
                 ============================ */
         :root {
@@ -62,9 +47,7 @@
             --yellow: #FFFF33;
             
             --green: #4ade80;
-            --green-dark: #22c55e;
             --red: #ef4444;
-            --red-dark: #dc2626;
         }
         
         /* ============================
@@ -79,7 +62,6 @@
         html {
             scroll-behavior: smooth;
             -webkit-text-size-adjust: 100%;
-            scrollbar-width: none;
         }
         
         body {
@@ -91,7 +73,6 @@
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
             width: 100%;
-            -ms-overflow-style: none;
         }
         
         img {
@@ -110,6 +91,21 @@
             margin: 0 auto;
             padding: 0 var(--container-padding);
             width: 100%;
+        }
+        
+        /* ============================
+                   SCROLLBAR - HIDDEN
+                ============================ */
+        ::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+            background: transparent;
+        }
+        html {
+            scrollbar-width: none;
+        }
+        body {
+            -ms-overflow-style: none;
         }
         
         /* ============================
@@ -197,7 +193,12 @@
             transform: translateY(-2px);
         }
         
-        /* Contact Trigger Button (for modal) */
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        /* Contact Trigger Button */
         .contact-trigger-btn {
             display: inline-flex;
             align-items: center;
@@ -231,6 +232,41 @@
         
         .contact-trigger-btn i {
             font-size: 16px;
+        }
+        
+        .nav .contact-trigger-btn {
+            padding: 8px 18px;
+            font-size: 11px;
+            min-height: 36px;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+        }
+        
+        .nav .contact-trigger-btn:hover {
+            background: var(--text-primary);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.15);
+        }
+        
+        .nav .contact-trigger-btn i {
+            font-size: 12px;
+        }
+        
+        .mobile-nav .contact-trigger-btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 8px;
+            background: var(--text-primary);
+            color: var(--text-dark);
+            padding: 14px;
+            font-size: 15px;
+            min-height: 50px;
+        }
+        
+        .mobile-nav .contact-trigger-btn:hover {
+            background: var(--text-secondary);
         }
         
         /* ============================
@@ -319,7 +355,7 @@
         .logo-img {
             width: 70px;
             height: 70px;
-            border-radius: 50%;
+            border-radius: 0%;
             object-fit: cover;
             border: 0px solid var(--text-muted);
         }
@@ -386,26 +422,6 @@
             margin-left: 4px;
         }
         
-        .nav .contact-trigger-btn {
-            padding: 8px 18px;
-            font-size: 11px;
-            min-height: 36px;
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-subtle);
-        }
-        
-        .nav .contact-trigger-btn:hover {
-            background: var(--text-primary);
-            color: var(--text-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255,255,255,0.15);
-        }
-        
-        .nav .contact-trigger-btn i {
-            font-size: 12px;
-        }
-        
         .hamburger {
             display: none;
             flex-direction: column;
@@ -440,6 +456,7 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
         
+        /* Mobile Nav */
         .mobile-nav {
             display: none;
             position: fixed;
@@ -479,21 +496,6 @@
             color: var(--text-primary);
         }
         
-        .mobile-nav .contact-trigger-btn {
-            width: 100%;
-            justify-content: center;
-            margin-top: 8px;
-            background: var(--text-primary);
-            color: var(--text-dark);
-            padding: 14px;
-            font-size: 15px;
-            min-height: 50px;
-        }
-        
-        .mobile-nav .contact-trigger-btn:hover {
-            background: var(--text-secondary);
-        }
-        
         .mobile-nav .btn {
             margin-top: 8px;
             width: 100%;
@@ -501,7 +503,7 @@
         }
         
         /* ============================
-                   HERO - SLIDESHOW
+                   HERO - FULL BANNER SLIDESHOW
                 ============================ */
         .hero {
             min-height: 100vh;
@@ -629,12 +631,12 @@
             font-weight: 500;
         }
         
-        /* ===== HERO TRADE INFO - WHITE TEXT WITH BOLD ===== */
+        /* Hero Trade Info */
         .hero-trade-info {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             margin-bottom: 24px;
         }
         
@@ -642,13 +644,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 16px;
+            font-size: clamp(13px, 1.2vw, 16px);
             font-weight: 700;
             color: var(--text-primary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             background: rgba(0,0,0,0.5);
-            padding: 10px 18px;
+            padding: 8px 16px;
             border-radius: 30px;
             border: 1px solid rgba(255,255,255,0.15);
             backdrop-filter: blur(4px);
@@ -657,7 +659,7 @@
         }
         
         .hero-trade-info .trade-item i {
-            font-size: 18px;
+            font-size: clamp(14px, 1.1vw, 18px);
             color: rgba(255,255,255,0.6);
         }
         
@@ -665,16 +667,15 @@
             color: var(--text-primary);
         }
         
-        /* Hours Badge with Color Bubble - WHITE TEXT BOLD */
         .hero-trade-info .hours-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 16px;
+            gap: 8px;
+            font-size: clamp(13px, 1.2vw, 16px);
             font-weight: 700;
             color: var(--text-primary);
             background: rgba(0,0,0,0.5);
-            padding: 10px 18px;
+            padding: 8px 16px;
             border-radius: 30px;
             border: 1px solid rgba(255,255,255,0.15);
             backdrop-filter: blur(4px);
@@ -684,14 +685,13 @@
         
         .hero-trade-info .hours-item .hours-icon {
             color: rgba(255,255,255,0.6);
-            font-size: 18px;
+            font-size: clamp(14px, 1.1vw, 18px);
         }
         
-        /* Color Bubble - Green or Red */
         .hero-trade-info .hours-item .status-bubble {
             display: inline-block;
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             flex-shrink: 0;
             transition: var(--transition);
@@ -710,7 +710,7 @@
         
         .hero-trade-info .hours-item .status-text {
             font-weight: 700;
-            font-size: 16px;
+            font-size: clamp(13px, 1.2vw, 16px);
         }
         
         .hero-trade-info .hours-item .status-text.open {
@@ -724,7 +724,7 @@
         .hero-trade-info .hours-item .hours-time {
             color: rgba(255,255,255,0.8);
             font-weight: 400;
-            font-size: 15px;
+            font-size: clamp(12px, 1vw, 15px);
         }
         
         .hero-actions {
@@ -864,6 +864,7 @@
             padding: 3px 14px;
             border-radius: 2px;
             margin-bottom: 10px;
+            align-self: flex-start;
         }
         
         .event-content h2 {
@@ -921,7 +922,7 @@
         }
         
         /* ============================
-                   ABOUT - WITH VERTICAL SLIDESHOW (4:5)
+                   ABOUT - WITH SLIDESHOW
                 ============================ */
         .about {
             padding: 50px 0;
@@ -971,7 +972,6 @@
             font-size: 13px;
         }
         
-        /* About Image Slideshow - VERTICAL 4:5 */
         .about-slideshow {
             position: relative;
             border-radius: var(--radius);
@@ -1000,14 +1000,6 @@
             opacity: 1;
         }
         
-        .about-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        /* About Slideshow Dots */
         .about-dots {
             position: absolute;
             bottom: 10px;
@@ -1039,7 +1031,7 @@
         }
         
         /* ============================
-                   PROMO BANNER - WITH GIVEAWAY CONTENT
+                   PROMO BANNER
                 ============================ */
         .promo-banner {
             padding: 50px 0;
@@ -1287,106 +1279,62 @@
         }
         
         /* ============================
-                   FEATURED PRODUCTS
+                   BRAND LOGOS - REPLACED PRODUCTS
                 ============================ */
-        .featured-products {
+        .brand-logos {
             padding: 50px 0;
             background: var(--bg-dark);
         }
         
-        .products-grid {
+        .logos-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
         
-        .product-card {
+        .brand-logo-card {
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius);
-            padding: 20px 16px 16px;
+            padding: 24px 16px;
             text-align: center;
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
         }
         
-        .product-card:hover {
+        .brand-logo-card:hover {
             border-color: var(--text-muted);
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.3);
         }
         
-        .product-card .image-placeholder {
-            background: var(--bg-light);
-            border-radius: var(--radius);
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-            border: 1px solid var(--border-subtle);
+        .brand-logo-card img {
+            max-width: 80%;
+            max-height: 80px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.9);
+            transition: var(--transition);
         }
         
-        .product-card .image-placeholder i {
-            font-size: 48px;
+        .brand-logo-card:hover img {
+            filter: grayscale(0%) brightness(1);
+        }
+        
+        .brand-logo-card .logo-placeholder {
+            font-family: var(--font-heading);
             color: var(--text-muted);
-            opacity: 0.5;
-        }
-        
-        .product-card .image-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: var(--radius);
-        }
-        
-        .product-card .badge {
-            display: inline-block;
-            font-size: 9px;
-            font-weight: 700;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 2px 12px;
-            border-radius: 20px;
-            background: var(--yellow);
-            color: var(--text-dark);
-            margin-bottom: 6px;
-        }
-        
-        .product-card h4 {
-            font-family: var(--font-heading);
-            color: var(--text-primary);
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-        
-        .product-card .category {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-        
-        .product-card .price {
-            font-family: var(--font-heading);
-            color: var(--text-primary);
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .product-card .btn {
-            width: 100%;
-            justify-content: center;
-            font-size: 11px;
-            padding: 10px;
-            min-height: 38px;
         }
         
         /* ============================
-                   CONTACT MODAL - WITH GREEN/RED HOURS
+                   CONTACT MODAL
                 ============================ */
         .contact-modal {
             display: none;
@@ -1425,14 +1373,6 @@
             padding: 36px 32px 28px;
             position: relative;
             box-shadow: 0 24px 80px rgba(0,0,0,0.6);
-        }
-        
-        .contact-modal-window::-webkit-scrollbar {
-            width: 4px;
-        }
-        .contact-modal-window::-webkit-scrollbar-thumb {
-            background: var(--text-muted);
-            border-radius: 10px;
         }
         
         .modal-close {
@@ -1527,7 +1467,6 @@
             color: var(--text-secondary);
         }
         
-        /* Hours with Green/Red Status */
         .modal-hours {
             margin-top: 16px;
             padding: 16px 20px;
@@ -1742,8 +1681,10 @@
         }
         
         /* ============================
-                   RESPONSIVE
+                   RESPONSIVE BREAKPOINTS
                 ============================ */
+        
+        /* Tablets */
         @media (max-width: 1024px) {
             .hero-grid {
                 text-align: center;
@@ -1763,6 +1704,29 @@
             .hero-actions .btn {
                 flex: 0 1 auto;
                 min-width: 130px;
+                max-width: 200px;
+            }
+            .event-wrapper {
+                flex-direction: column;
+                text-align: center;
+                gap: 24px;
+            }
+            .event-image {
+                flex: 0 0 auto;
+                max-width: 55%;
+            }
+            .event-content .tag {
+                align-self: center;
+            }
+            .event-meta {
+                justify-content: center;
+            }
+            .event-actions {
+                justify-content: center;
+            }
+            .event-actions .btn {
+                flex: 0 1 auto;
+                min-width: 120px;
                 max-width: 200px;
             }
             .about-grid {
@@ -1787,26 +1751,6 @@
                 max-height: 350px;
                 margin: 0 auto;
             }
-            .event-wrapper {
-                flex-direction: column;
-                text-align: center;
-                gap: 24px;
-            }
-            .event-image {
-                flex: 0 0 auto;
-                max-width: 55%;
-            }
-            .event-meta {
-                justify-content: center;
-            }
-            .event-actions {
-                justify-content: center;
-            }
-            .event-actions .btn {
-                flex: 0 1 auto;
-                min-width: 120px;
-                max-width: 200px;
-            }
             .giveaway-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1818,11 +1762,13 @@
             .whatnot-show-card {
                 max-width: 80%;
             }
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .logos-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
             }
         }
         
+        /* Mobile Phones */
         @media (max-width: 768px) {
             :root {
                 --container-padding: 16px;
@@ -1832,11 +1778,9 @@
             .nav a:not(.contact-trigger-btn) {
                 display: none;
             }
-            
             .nav .contact-trigger-btn {
                 display: none;
             }
-            
             .hamburger {
                 display: flex;
             }
@@ -1863,22 +1807,22 @@
             }
             .hero-trade-info .trade-item,
             .hero-trade-info .hours-item {
-                font-size: 14px;
-                padding: 8px 14px;
+                font-size: 13px;
+                padding: 6px 12px;
             }
             .hero-trade-info .trade-item i,
             .hero-trade-info .hours-item .hours-icon {
-                font-size: 15px;
-            }
-            .hero-trade-info .hours-item .status-bubble {
-                width: 12px;
-                height: 12px;
-            }
-            .hero-trade-info .hours-item .status-text {
                 font-size: 14px;
             }
-            .hero-trade-info .hours-item .hours-time {
+            .hero-trade-info .hours-item .status-bubble {
+                width: 11px;
+                height: 11px;
+            }
+            .hero-trade-info .hours-item .status-text {
                 font-size: 13px;
+            }
+            .hero-trade-info .hours-item .hours-time {
+                font-size: 12px;
             }
             .hero-actions {
                 flex-direction: row;
@@ -1994,18 +1938,20 @@
                 margin: 10px;
                 max-height: 95vh;
             }
-            .products-grid {
+            .logos-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
             }
-            .product-card .image-placeholder {
-                height: 100px;
+            .brand-logo-card {
+                min-height: 100px;
+                padding: 16px 12px;
             }
-            .product-card .image-placeholder i {
-                font-size: 32px;
+            .brand-logo-card img {
+                max-height: 60px;
             }
         }
         
+        /* Small Mobile Phones */
         @media (max-width: 480px) {
             :root {
                 --container-padding: 12px;
@@ -2024,29 +1970,29 @@
             .hero-trade-info {
                 flex-direction: column;
                 align-items: center;
-                gap: 10px;
+                gap: 8px;
             }
             .hero-trade-info .trade-item,
             .hero-trade-info .hours-item {
-                font-size: 13px;
-                padding: 8px 14px;
+                font-size: 12px;
+                padding: 6px 12px;
                 width: auto;
                 justify-content: center;
                 white-space: nowrap;
             }
             .hero-trade-info .trade-item i,
             .hero-trade-info .hours-item .hours-icon {
-                font-size: 14px;
-            }
-            .hero-trade-info .hours-item .status-bubble {
-                width: 11px;
-                height: 11px;
-            }
-            .hero-trade-info .hours-item .status-text {
                 font-size: 13px;
             }
-            .hero-trade-info .hours-item .hours-time {
+            .hero-trade-info .hours-item .status-bubble {
+                width: 10px;
+                height: 10px;
+            }
+            .hero-trade-info .hours-item .status-text {
                 font-size: 12px;
+            }
+            .hero-trade-info .hours-item .hours-time {
+                font-size: 11px;
             }
             .hero-badge {
                 font-size: 10px;
@@ -2067,6 +2013,25 @@
             .section-header h2 {
                 font-size: clamp(22px, 6vw, 28px);
             }
+            .event-image {
+                max-width: 100%;
+            }
+            .event-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .event-actions {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            .event-actions .btn {
+                width: 100%;
+                min-width: unset;
+                max-width: unset;
+                justify-content: center;
+            }
             .about-text .features {
                 grid-template-columns: 1fr;
                 gap: 6px;
@@ -2078,21 +2043,6 @@
                 max-width: 200px;
                 max-height: 250px;
             }
-            .event-image {
-                max-width: 100%;
-            }
-            .event-meta {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            .event-actions .btn {
-                min-width: 100px;
-                max-width: 160px;
-                font-size: 11px;
-                padding: 10px 14px;
-                min-height: 38px;
-            }
             .giveaway-card h4 {
                 font-size: 14px;
             }
@@ -2102,12 +2052,19 @@
             .giveaway-footer p {
                 font-size: 14px;
             }
+            .promo-banner .actions {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
             .promo-banner .actions .btn {
-                min-width: 120px;
-                max-width: 180px;
-                font-size: 11px;
-                padding: 10px 16px;
-                min-height: 38px;
+                width: 100%;
+                min-width: unset;
+                max-width: unset;
+                justify-content: center;
+                font-size: 12px;
+                padding: 12px 16px;
+                min-height: 42px;
             }
             .footer-links {
                 flex-direction: column;
@@ -2139,36 +2096,20 @@
                 flex-wrap: wrap;
                 gap: 4px;
             }
-            .products-grid {
-                grid-template-columns: 1fr 1fr;
+            .logos-grid {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
-            .product-card {
-                padding: 14px 10px 12px;
+            .brand-logo-card {
+                min-height: 80px;
+                padding: 12px 8px;
             }
-            .product-card .image-placeholder {
-                height: 80px;
-            }
-            .product-card .image-placeholder i {
-                font-size: 24px;
-            }
-            .product-card h4 {
-                font-size: 13px;
-            }
-            .product-card .price {
-                font-size: 15px;
-            }
-            .product-card .btn {
-                font-size: 10px;
-                padding: 8px;
-                min-height: 32px;
-            }
-            .about-dots .dot {
-                width: 6px;
-                height: 6px;
+            .brand-logo-card img {
+                max-height: 50px;
             }
         }
         
+        /* Very Small Phones */
         @media (max-width: 360px) {
             .logo-text {
                 font-size: 11px;
@@ -2182,15 +2123,12 @@
             }
             .hero-trade-info .trade-item,
             .hero-trade-info .hours-item {
-                font-size: 11px;
-                padding: 6px 12px;
+                font-size: 10px;
+                padding: 4px 10px;
             }
             .hero-trade-info .hours-item .status-bubble {
-                width: 10px;
-                height: 10px;
-            }
-            .hero-trade-info .hours-item .status-text {
-                font-size: 11px;
+                width: 9px;
+                height: 9px;
             }
             .hero-actions .btn {
                 min-width: 80px;
@@ -2207,13 +2145,11 @@
                 min-height: 34px;
             }
             .promo-banner .actions .btn {
-                min-width: 100px;
-                max-width: 160px;
                 font-size: 10px;
                 padding: 8px 12px;
                 min-height: 34px;
             }
-            .products-grid {
+            .logos-grid {
                 grid-template-columns: 1fr;
                 max-width: 280px;
                 margin: 0 auto;
@@ -2224,6 +2160,7 @@
             }
         }
         
+        /* Touch-friendly hover states */
         @media (hover: none) {
             .btn:hover {
                 transform: none !important;
@@ -2249,9 +2186,12 @@
                 background: transparent;
                 color: var(--text-secondary);
             }
-            .product-card:hover {
+            .brand-logo-card:hover {
                 transform: none !important;
                 border-color: var(--border-subtle);
+            }
+            .brand-logo-card:hover img {
+                filter: grayscale(100%) brightness(0.9);
             }
             .giveaway-card:hover {
                 transform: none !important;
@@ -2262,6 +2202,7 @@
             }
         }
         
+        /* Reduced motion preference */
         @media (prefers-reduced-motion: reduce) {
             .hero-slide {
                 transition: none !important;
@@ -2289,7 +2230,7 @@
     <div class="container">
         <a href="#" class="logo" aria-label="JJCK Collectibles Home">
             <img class="logo-img" src="https://i.imgur.com/gwK9qLo.png" alt="JJCK Collectibles">
-            <span class="logo-text">JJCK <span> Collectibles</span></span>
+            <span class="logo-text">JJCK<span>Collectibles</span></span>
         </a>
         
         <nav class="nav" id="nav" aria-label="Main Navigation">
@@ -2344,7 +2285,6 @@
                 <h1>Where <span class="highlight">Collectors</span> Become Family</h1>
                 <p>Sports cards, Pokémon, One Piece, Magic, Lorcana &amp; more. Family-owned and community-driven since day one.</p>
                 
-                <!-- Trade & Hours Badges - WHITE BOLD TEXT -->
                 <div class="hero-trade-info">
                     <span class="trade-item">
                         <i class="fas fa-credit-card" aria-hidden="true"></i>
@@ -2354,8 +2294,6 @@
                         <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
                         <span class="accent">Trade</span> by Cash
                     </span>
-                    
-                    <!-- Hours Badge with Color Bubble -->
                     <span class="hours-item" id="heroHoursBadge">
                         <i class="fas fa-clock hours-icon" aria-hidden="true"></i>
                         <span class="status-bubble" id="heroStatusBubble"></span>
@@ -2407,7 +2345,7 @@
         
         <div class="event-wrapper">
             <div class="event-image">
-                <img src="//img1.wsimg.com/isteam/ip/7c68d443-7c2c-4c2f-860f-93c5bf87afbb/Midflorida_%20Flyer_2026%20.png/:/rs=w:600,h:450,cg:true,m" alt="MIDFLORIDA Card Expo flyer" loading="lazy">
+                <img src="https://img1.wsimg.com/isteam/ip/7c68d443-7c2c-4c2f-860f-93c5bf87afbb/Midflorida_%20Flyer_2026%20.png/:/rs=w:600,h:450,cg:true,m" alt="MIDFLORIDA Card Expo Flyer" loading="lazy">
             </div>
             <div class="event-content">
                 <span class="tag">Presented by JJCK</span>
@@ -2429,7 +2367,7 @@
     </div>
 </section>
 
-<!-- ===== ABOUT - WITH VERTICAL SLIDESHOW (4:5) ===== -->
+<!-- ===== ABOUT ===== -->
 <section class="about" id="about">
     <div class="container">
         <div class="about-grid">
@@ -2458,7 +2396,6 @@
                 <a href="#shop" class="btn btn-primary" style="margin-top:6px;"><i class="fas fa-arrow-right" aria-hidden="true"></i> Explore Collection</a>
             </div>
             
-            <!-- Vertical Slideshow 4:5 -->
             <div class="about-slideshow" id="aboutSlideshow">
                 <div class="about-slide active" data-index="0" style="background-image: url('https://i.imgur.com/lSHTgC8.png');"></div>
                 <div class="about-slide" data-index="1" style="background-image: url('https://i.imgur.com/gHukRN3.png');"></div>
@@ -2478,13 +2415,12 @@
     </div>
 </section>
 
-<!-- ===== PROMO BANNER - WITH GIVEAWAY CONTENT ===== -->
+<!-- ===== PROMO BANNER ===== -->
 <section class="promo-banner">
     <div class="container">
         <h2>Join Our <span class="highlight">Online Auctions</span></h2>
         <p class="subtitle">We're thrilled to invite you to our online auction on the WhatNot auction service!</p>
         
-        <!-- Whatnot Show Card -->
         <div class="whatnot-show-card">
             <a href="https://www.whatnot.com/s/0jMzzmvP" target="_blank" rel="noopener noreferrer">
                 <div class="show-preview">
@@ -2504,7 +2440,6 @@
             </a>
         </div>
         
-        <!-- Facebook Giveaway Section -->
         <div style="margin: 28px 0 16px; border-top: 2px solid rgba(0,0,0,0.08); padding-top: 24px;">
             <h2 style="font-size: clamp(20px, 2.5vw, 28px); margin-bottom: 4px;">
                 <i class="fab fa-facebook" style="color: #1877f2; margin-right: 10px;"></i>
@@ -2518,7 +2453,6 @@
             </p>
         </div>
         
-        <!-- Giveaway Steps -->
         <div class="giveaway-grid">
             <div class="giveaway-card">
                 <div class="step-number">1</div>
@@ -2539,7 +2473,6 @@
             </div>
         </div>
         
-        <!-- Giveaway Footer -->
         <div class="giveaway-footer">
             <p>
                 <strong>The more you shop, the more chances you have to win!</strong> 
@@ -2554,63 +2487,55 @@
     </div>
 </section>
 
-<!-- ===== FEATURED PRODUCTS ===== -->
-<section class="featured-products" id="products">
+<!-- ===== BRAND LOGOS - REPLACED FEATURED PRODUCTS ===== -->
+<section class="brand-logos" id="brands">
     <div class="container">
         <div class="section-header">
-            <span class="tag">Top Picks</span>
-            <h2>Featured <span class="highlight">Products</span></h2>
-            <p>Explore our most popular collectibles and cards</p>
+            <span class="tag">Trusted Brands</span>
+            <h2>We Carry <span class="highlight">Premium</span> Products</h2>
+            <p>From the biggest names in trading cards and collectibles</p>
             <div class="line"></div>
         </div>
         
-        <div class="products-grid">
-            <!-- Product 1 -->
-            <div class="product-card">
-                <div class="image-placeholder">
-                    <i class="fas fa-image"></i>
-                </div>
-                <span class="badge">Hot</span>
-                <h4>Product Name</h4>
-                <p class="category">Category</p>
-                <div class="price">$XX.XX</div>
-                <a href="#shop" class="btn btn-primary">View Product</a>
+        <div class="logos-grid">
+            <!-- Magic: The Gathering -->
+            <div class="brand-logo-card">
+                <img src="https://1000logos.net/wp-content/uploads/2022/10/Magic-The-Gathering-Logo-1993.png" alt="Magic: The Gathering" loading="lazy">
             </div>
             
-            <!-- Product 2 -->
-            <div class="product-card">
-                <div class="image-placeholder">
-                    <i class="fas fa-image"></i>
-                </div>
-                <span class="badge">New</span>
-                <h4>Product Name</h4>
-                <p class="category">Category</p>
-                <div class="price">$XX.XX</div>
-                <a href="#shop" class="btn btn-primary">View Product</a>
+            <!-- Pokémon -->
+            <div class="brand-logo-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Pok%C3%A9mon_Trading_Card_Game_logo.svg/330px-Pok%C3%A9mon_Trading_Card_Game_logo.svg.png?_=20141222060945" alt="Pokémon" loading="lazy">
             </div>
             
-            <!-- Product 3 -->
-            <div class="product-card">
-                <div class="image-placeholder">
-                    <i class="fas fa-image"></i>
-                </div>
-                <span class="badge">Hot</span>
-                <h4>Product Name</h4>
-                <p class="category">Category</p>
-                <div class="price">$XX.XX</div>
-                <a href="#shop" class="btn btn-primary">View Product</a>
+            <!-- Disney Lorcana -->
+            <div class="brand-logo-card">
+                <img src="https://static.wixstatic.com/media/91be11_f9288d8f9cea4f0eaf0c28960445cecf~mv2.png/v1/crop/x_60,y_0,w_624,h_355/fill/w_660,h_376,fp_0.50_0.50,lg_1,q_85,enc_avif,quality_auto/Disney%20Lorcana_TCG_Logo%20transparent.png" alt="Disney Lorcana" loading="lazy">
             </div>
             
-            <!-- Product 4 -->
-            <div class="product-card">
-                <div class="image-placeholder">
-                    <i class="fas fa-image"></i>
-                </div>
-                <span class="badge">New</span>
-                <h4>Product Name</h4>
-                <p class="category">Category</p>
-                <div class="price">$XX.XX</div>
-                <a href="#shop" class="btn btn-primary">View Product</a>
+            <!-- One Piece -->
+            <div class="brand-logo-card">
+                <img src="https://static.wixstatic.com/media/57a197_e334385962ac4203abe6390f3b6ff4c6~mv2.png/v1/fill/w_560,h_314,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ONE%20PIECE%20LOGO.png" alt="One Piece Card Game" loading="lazy">
+            </div>
+            
+            <!-- Panini -->
+            <div class="brand-logo-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Panini_group_logo.png" alt="Panini" loading="lazy">
+            </div>
+            
+            <!-- Topps -->
+            <div class="brand-logo-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Topps_Logo.svg" alt="Topps" loading="lazy">
+            </div>
+            
+            <!-- Extra slot for future brand -->
+            <div class="brand-logo-card">
+                <div class="logo-placeholder">+ More Brands</div>
+            </div>
+            
+            <!-- Extra slot for future brand -->
+            <div class="brand-logo-card">
+                <div class="logo-placeholder">Coming Soon</div>
             </div>
         </div>
     </div>
@@ -2654,7 +2579,6 @@
                 </div>
             </div>
             
-            <!-- Hours with Green/Red Status -->
             <div class="modal-hours" id="modalHours">
                 <h4><i class="fas fa-clock" style="color:var(--text-muted);margin-right:8px;"></i> Business Hours</h4>
                 
@@ -2761,7 +2685,7 @@
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#shop">Shop</a></li>
                         <li><a href="#events">Events</a></li>
-                        <li><a href="#products">Featured Products</a></li>
+                        <li><a href="#brands">Our Brands</a></li>
                     </ul>
                 </div>
                 
@@ -3036,27 +2960,24 @@
         // ===== BUSINESS HOURS STATUS =====
         function updateHoursStatus() {
             const now = new Date();
-            const day = now.getDay(); // 0 = Sunday, 1 = Monday, ...
+            const day = now.getDay();
             const hours = now.getHours();
             const minutes = now.getMinutes();
             const currentTime = hours + minutes / 60;
             
-            // Define hours for each day
             const dayHours = {
-                0: { open: 12, close: 16 }, // Sunday: 12PM - 4PM
-                1: { open: 10, close: 18 }, // Monday: 10AM - 6PM
-                2: { open: 10, close: 18 }, // Tuesday: 10AM - 6PM
-                3: { open: 10, close: 18 }, // Wednesday: 10AM - 6PM
-                4: { open: 10, close: 18 }, // Thursday: 10AM - 6PM
-                5: { open: 10, close: 18 }, // Friday: 10AM - 6PM
-                6: { open: 10, close: 18 }  // Saturday: 10AM - 6PM
+                0: { open: 12, close: 16 },
+                1: { open: 10, close: 18 },
+                2: { open: 10, close: 18 },
+                3: { open: 10, close: 18 },
+                4: { open: 10, close: 18 },
+                5: { open: 10, close: 18 },
+                6: { open: 10, close: 18 }
             };
             
-            // Get today's hours
             const todayHours = dayHours[day];
             const isOpen = currentTime >= todayHours.open && currentTime < todayHours.close;
             
-            // Update hero hours badge with color bubble
             const statusBubble = document.getElementById('heroStatusBubble');
             const heroOpenStatus = document.getElementById('heroOpenStatus');
             const heroHours = document.getElementById('heroHours');
@@ -3073,18 +2994,14 @@
                 }
             }
             
-            // Update hours display
             if (heroHours) {
                 const startHour = todayHours.open;
                 const endHour = todayHours.close;
-                const startAmPm = startHour >= 12 ? 'PM' : 'AM';
-                const endAmPm = endHour >= 12 ? 'PM' : 'AM';
                 const startDisplay = startHour > 12 ? startHour - 12 : startHour;
                 const endDisplay = endHour > 12 ? endHour - 12 : endHour;
                 heroHours.textContent = startDisplay + 'AM - ' + endDisplay + 'PM';
             }
             
-            // Update modal hours rows
             const rows = document.querySelectorAll('.modal-hours .row[data-day]');
             rows.forEach(function(row) {
                 const dayIndex = parseInt(row.getAttribute('data-day'));
@@ -3093,7 +3010,6 @@
                 const statusText = row.querySelector('.status-text');
                 
                 if (statusDot && statusText) {
-                    // Check if this day is currently open (only check today's day)
                     if (dayIndex === day) {
                         if (isOpen) {
                             statusDot.className = 'dot open';
@@ -3105,7 +3021,6 @@
                             statusText.textContent = 'Closed';
                         }
                     } else {
-                        // For other days, show as open (they will be open during their hours)
                         statusDot.className = 'dot open';
                         statusText.className = 'open-text';
                         statusText.textContent = 'Open';
@@ -3114,10 +3029,7 @@
             });
         }
         
-        // Update hours on page load
         updateHoursStatus();
-        
-        // Update hours every minute
         setInterval(updateHoursStatus, 60000);
         
         // ===== CONTACT MODAL =====
@@ -3132,7 +3044,6 @@
         function openModal() {
             modal.classList.add('open');
             document.body.style.overflow = 'hidden';
-            // Update hours when modal opens
             updateHoursStatus();
             setTimeout(function() {
                 closeBtn.focus();
