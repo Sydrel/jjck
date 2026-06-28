@@ -48,6 +48,7 @@
             
             --green: #4ade80;
             --red: #ef4444;
+            --orange: #f59e0b;
         }
         
         /* ============================
@@ -1565,6 +1566,10 @@
             background: var(--red);
         }
         
+        .modal-hours .row .status .dot.warning {
+            background: var(--orange);
+        }
+        
         .modal-hours .row .status .open-text {
             color: var(--green);
         }
@@ -1573,13 +1578,17 @@
             color: var(--red);
         }
         
+        .modal-hours .row .status .warning-text {
+            color: var(--orange);
+        }
+        
         .modal-hours .row .closed-holiday {
             color: var(--text-muted);
             font-size: 12px;
         }
         
         .modal-hours .row .closed-holiday .dot {
-            background: var(--red);
+            background: var(--orange);
         }
         
         .modal-visit {
@@ -2620,11 +2629,10 @@
                 </a>
             </div>
             
-            <!-- Riftbound -->
+            <!-- Riftbound - text removed -->
             <div class="brand-logo-card">
                 <a href="https://www.jjckcollectibles.com/shop/riftbound" target="_blank" rel="noopener noreferrer">
                     <img src="https://upload.wikimedia.org/wikipedia/en/2/2c/Riftbound_League_of_Legends_Trading_Card_Game_cover.png" alt="Riftbound" loading="lazy">
-                    <div class="logo-placeholder"></div>
                 </a>
             </div>
             
@@ -2679,12 +2687,13 @@
             <div class="modal-hours" id="modalHours">
                 <h4><i class="fas fa-clock" style="color:var(--text-muted);margin-right:8px;"></i> Business Hours</h4>
                 
+                <!-- Monday - Now showing Open with green dot -->
                 <div class="row" data-day="0">
                     <span>Monday</span>
                     <span>10:00 AM – 6:00 PM</span>
                     <span class="status">
-                        <span class="dot"></span>
-                        <span class="status-text"></span>
+                        <span class="dot open"></span>
+                        <span class="open-text">Open</span>
                     </span>
                 </div>
                 
@@ -2692,8 +2701,8 @@
                     <span>Tuesday</span>
                     <span>10:00 AM – 6:00 PM</span>
                     <span class="status">
-                        <span class="dot"></span>
-                        <span class="status-text"></span>
+                        <span class="dot open"></span>
+                        <span class="open-text">Open</span>
                     </span>
                 </div>
                 
@@ -2701,8 +2710,8 @@
                     <span>Wednesday</span>
                     <span>10:00 AM – 6:00 PM</span>
                     <span class="status">
-                        <span class="dot"></span>
-                        <span class="status-text"></span>
+                        <span class="dot open"></span>
+                        <span class="open-text">Open</span>
                     </span>
                 </div>
                 
@@ -2710,8 +2719,8 @@
                     <span>Thursday</span>
                     <span>10:00 AM – 6:00 PM</span>
                     <span class="status">
-                        <span class="dot"></span>
-                        <span class="status-text"></span>
+                        <span class="dot open"></span>
+                        <span class="open-text">Open</span>
                     </span>
                 </div>
                 
@@ -2719,8 +2728,8 @@
                     <span>Friday</span>
                     <span>10:00 AM – 6:00 PM</span>
                     <span class="status">
-                        <span class="dot"></span>
-                        <span class="status-text"></span>
+                        <span class="dot open"></span>
+                        <span class="open-text">Open</span>
                     </span>
                 </div>
                 
@@ -2728,8 +2737,8 @@
                     <span>Saturday</span>
                     <span>10:00 AM – 6:00 PM</span>
                     <span class="status">
-                        <span class="dot"></span>
-                        <span class="status-text"></span>
+                        <span class="dot open"></span>
+                        <span class="open-text">Open</span>
                     </span>
                 </div>
                 
@@ -2737,16 +2746,17 @@
                     <span>Sunday</span>
                     <span>12:00 PM – 4:00 PM</span>
                     <span class="status">
-                        <span class="dot"></span>
-                        <span class="status-text"></span>
+                        <span class="dot open"></span>
+                        <span class="open-text">Open</span>
                     </span>
                 </div>
                 
+                <!-- Updated: Closed on major holidays → hours might differ with yellow dot -->
                 <div class="row" style="border-bottom: none; padding-top: 6px;">
                     <span class="closed-holiday">Closed on major holidays</span>
                     <span class="status">
-                        <span class="dot closed"></span>
-                        <span class="closed-text">Closed</span>
+                        <span class="dot warning"></span>
+                        <span class="warning-text">Hours might Differ</span>
                     </span>
                 </div>
             </div>
@@ -3054,22 +3064,23 @@
         
         startAboutSlideshow();
         
-        // ===== BUSINESS HOURS STATUS =====
+        // ===== BUSINESS HOURS STATUS (CORRECTED) =====
         function updateHoursStatus() {
             const now = new Date();
-            const day = now.getDay();
+            const day = now.getDay(); // 0=Sun, 1=Mon, ... 6=Sat
             const hours = now.getHours();
             const minutes = now.getMinutes();
             const currentTime = hours + minutes / 60;
             
+            // Correct day mapping: 0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat
             const dayHours = {
-                0: { open: 12, close: 16 },
-                1: { open: 10, close: 18 },
-                2: { open: 10, close: 18 },
-                3: { open: 10, close: 18 },
-                4: { open: 10, close: 18 },
-                5: { open: 10, close: 18 },
-                6: { open: 10, close: 18 }
+                0: { open: 12, close: 16 }, // Sunday
+                1: { open: 10, close: 18 }, // Monday
+                2: { open: 10, close: 18 }, // Tuesday
+                3: { open: 10, close: 18 }, // Wednesday
+                4: { open: 10, close: 18 }, // Thursday
+                5: { open: 10, close: 18 }, // Friday
+                6: { open: 10, close: 18 }  // Saturday
             };
             
             const todayHours = dayHours[day];
@@ -3094,9 +3105,11 @@
             if (heroHours) {
                 const startHour = todayHours.open;
                 const endHour = todayHours.close;
-                const startDisplay = startHour > 12 ? startHour - 12 : startHour;
-                const endDisplay = endHour > 12 ? endHour - 12 : endHour;
-                heroHours.textContent = startDisplay + 'AM - ' + endDisplay + 'PM';
+                const startDisplay = startHour >= 12 ? (startHour === 12 ? 12 : startHour - 12) : startHour;
+                const endDisplay = endHour >= 12 ? (endHour === 12 ? 12 : endHour - 12) : endHour;
+                const startAmPm = startHour >= 12 ? 'PM' : 'AM';
+                const endAmPm = endHour >= 12 ? 'PM' : 'AM';
+                heroHours.textContent = startDisplay + startAmPm + ' - ' + endDisplay + endAmPm;
             }
             
             const rows = document.querySelectorAll('.modal-hours .row[data-day]');
