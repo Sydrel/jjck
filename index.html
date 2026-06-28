@@ -834,11 +834,22 @@
             gap: 30px;
             max-width: 1100px;
             margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .event-media {
+            display: flex;
+            gap: 20px;
+            flex: 0 0 55%;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
         .event-image {
-            flex: 0 0 40%;
-            max-width: 40%;
+            flex: 0 0 45%;
+            min-width: 200px;
+            max-width: 300px;
         }
         
         .event-image img {
@@ -849,8 +860,27 @@
             height: auto;
         }
         
+        .event-video {
+            flex: 0 0 40%;
+            min-width: 180px;
+            max-width: 279px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .event-video iframe {
+            border-radius: var(--radius);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-subtle);
+            width: 100%;
+            height: auto;
+            aspect-ratio: 279 / 497;
+        }
+        
         .event-content {
             flex: 1;
+            min-width: 280px;
         }
         
         .event-content .tag {
@@ -1762,9 +1792,18 @@
                 text-align: center;
                 gap: 24px;
             }
+            .event-media {
+                flex: 0 0 100%;
+                width: 100%;
+                justify-content: center;
+            }
             .event-image {
-                flex: 0 0 auto;
-                max-width: 55%;
+                flex: 0 0 45%;
+                max-width: 300px;
+            }
+            .event-video {
+                flex: 0 0 40%;
+                max-width: 279px;
             }
             .event-content .tag {
                 align-self: center;
@@ -1936,8 +1975,18 @@
                 align-items: center;
                 text-align: center;
             }
+            .event-media {
+                flex: 0 0 100%;
+                width: 100%;
+                justify-content: center;
+            }
             .event-image {
-                max-width: 80%;
+                flex: 0 0 45%;
+                max-width: 250px;
+            }
+            .event-video {
+                flex: 0 0 40%;
+                max-width: 200px;
             }
             .event-content h2 {
                 font-size: clamp(22px, 5vw, 28px);
@@ -2128,8 +2177,19 @@
             .section-header h2 {
                 font-size: clamp(22px, 6vw, 28px);
             }
+            .event-media {
+                flex: 0 0 100%;
+                width: 100%;
+                justify-content: center;
+                gap: 12px;
+            }
             .event-image {
-                max-width: 100%;
+                flex: 0 0 45%;
+                max-width: 160px;
+            }
+            .event-video {
+                flex: 0 0 40%;
+                max-width: 150px;
             }
             .event-meta {
                 flex-direction: column;
@@ -2275,6 +2335,12 @@
                 font-size: 10px;
                 padding: 8px 12px;
                 min-height: 34px;
+            }
+            .event-image {
+                max-width: 130px;
+            }
+            .event-video {
+                max-width: 120px;
             }
             .promo-banner .actions .btn {
                 font-size: 10px;
@@ -2484,9 +2550,17 @@
         </div>
         
         <div class="event-wrapper">
-            <div class="event-image">
-                <img src="https://img1.wsimg.com/isteam/ip/7c68d443-7c2c-4c2f-860f-93c5bf87afbb/Midflorida_%20Flyer_2026%20.png/:/rs=w:600,h:450,cg:true,m" alt="MIDFLORIDA Card Expo Flyer" loading="lazy">
+            <!-- Image & Video side by side -->
+            <div class="event-media">
+                <div class="event-image">
+                    <img src="https://img1.wsimg.com/isteam/ip/7c68d443-7c2c-4c2f-860f-93c5bf87afbb/Midflorida_%20Flyer_2026%20.png/:/rs=w:600,h:450,cg:true,m" alt="MIDFLORIDA Card Expo Flyer" loading="lazy">
+                </div>
+                
+                <div class="event-video">
+                    <iframe width="279" height="497" style="border:0; border-radius:12px;" scrolling="no" src="https://go.screenpal.com/player/cO1ubpnUelB?width=279&height=497&ff=1&title=0&controls=0&m=1&bg=transparent" allowfullscreen="true" loading="lazy"></iframe>
+                </div>
             </div>
+            
             <div class="event-content">
                 <span class="tag">Presented by JJCK</span>
                 <h2>The Treasure Coast's <span class="highlight">Biggest Card Event</span></h2>
@@ -3163,11 +3237,11 @@
             if (statusBubble && heroOpenStatus) {
                 if (isOpen) {
                     statusBubble.className = 'status-bubble open';
-                    heroOpenStatus.textContent = 'Open';
+                    heroOpenStatus.textContent = 'Open Today';
                     heroOpenStatus.className = 'status-text open';
                 } else {
                     statusBubble.className = 'status-bubble closed';
-                    heroOpenStatus.textContent = 'Closed';
+                    heroOpenStatus.textContent = 'Closed Today';
                     heroOpenStatus.className = 'status-text closed';
                 }
             }
